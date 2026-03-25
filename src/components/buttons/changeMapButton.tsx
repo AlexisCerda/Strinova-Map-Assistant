@@ -45,9 +45,11 @@ const ChangeMapButton: React.FC<ChangeMapButtonProps> = ({
             ))}
           </Dropdown.Menu>
         }>
-        <Button icon={<FaMap />} theme='light'>
-          {currentLanguage.mapsetting.maps[currentMap]}
-        </Button>
+        <span>
+          <Button icon={<FaMap />} theme='light'>
+            {currentLanguage.mapsetting.maps[currentMap]}
+          </Button>
+        </span>
       </Dropdown>
     </div>
   )

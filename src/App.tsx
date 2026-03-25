@@ -13,7 +13,7 @@ const App: React.FC = () => {
     if (!characterData) {
       loadAllCharacters().then(data => {
         setCharacterData(data)
-        console.log(characterData)
+        console.log(data)
         setLoading(false);
       });
     }

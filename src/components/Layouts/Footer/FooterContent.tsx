@@ -31,19 +31,25 @@ const FooterContent: React.FC = () => {
         </div>
         <div style={{ height: 'max', display: 'flex', flexDirection: 'row', alignItems: 'center', marginLeft: '10px', marginTop: '6px' }}>
           <Tooltip content='Github repository'>
-            <a href='https://github.com/AlexisCerda/Strinova-Map-Assistant' target='_blank' style={{}}>
-              <FaGithub />
-            </a>
+            <span>
+              <a href='https://github.com/AlexisCerda/Strinova-Map-Assistant' target='_blank' style={{}}>
+                <FaGithub />
+              </a>
+            </span>
           </Tooltip>
           <Tooltip content='Discord channel'>
-            <a href='https://discord.gg/Zn6fWgT4Sb' target='_blank' style={{ marginLeft: '5px' }}>
-              <FaDiscord />
-            </a>
+            <span>
+              <a href='https://discord.gg/Zn6fWgT4Sb' target='_blank' style={{ marginLeft: '5px' }}>
+                <FaDiscord />
+              </a>
+            </span>
           </Tooltip>
           <Tooltip content='QQ群'>
-            <a href='https://qm.qq.com/q/E96Z4s8eze' target='_blank' style={{ marginLeft: '5px' }}>
-              <FaQq />
-            </a>
+            <span>
+              <a href='https://qm.qq.com/q/E96Z4s8eze' target='_blank' style={{ marginLeft: '5px' }}>
+                <FaQq />
+              </a>
+            </span>
           </Tooltip>
         </div>
         <div style={{ marginBottom: '0px', display: 'flex', flexDirection: 'row' }}>

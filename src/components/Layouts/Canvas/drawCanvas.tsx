@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, useRef, useCallback } from 'react'
 import { DrawType, Pikaso, type BaseShapes } from 'pikaso'
 import { mapTools } from '../../../utils/canvasConstants'
 import { getDragValue, setDragValue } from '../../../data/dragAndDrop.ts'
@@ -30,18 +30,18 @@ const DrawMap: React.FC<PikasoMapProps> = ({
   panelcollaps,
   load
 }) => {
-  let rescaleTO: any
-  const rescaleEditor = (timeout: number = 0) => {
-    clearTimeout(rescaleTO)
-    rescaleTO = setTimeout(() => {
+  const rescaleTO = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const rescaleEditor = useCallback((timeout: number = 0) => {
+    if (rescaleTO.current !== null) clearTimeout(rescaleTO.current)
+    rescaleTO.current = setTimeout(() => {
       requestAnimationFrame(() => {
         if (!pikasoEditor) return
         const scaleSize = 1000
-        pikasoEditor?.board.stage.setSize({width: scaleSize, height: scaleSize}) 
+        pikasoEditor?.board.stage.setSize({width: scaleSize, height: scaleSize})
         pikasoEditor?.board.rescale()
       })
-    },timeout)
-  }
+    }, timeout)
+  }, [pikasoEditor])
 
   useLayoutEffect(() => {
     switch (canvasTool) {
@@ -86,19 +86,17 @@ const DrawMap: React.FC<PikasoMapProps> = ({
   ])
 
   useLayoutEffect(() => {
+    const handleResize = () => rescaleEditor()
     rescaleEditor()
-    window.addEventListener('resize', ()=>rescaleEditor())
+    window.addEventListener('resize', handleResize)
     return () => {
-      window.removeEventListener('resize', ()=>rescaleEditor())
+      window.removeEventListener('resize', handleResize)
     }
-  }, [
-    currentMap,
-    pikasoEditor?.board.background,
-  ])
+  }, [rescaleEditor, currentMap, pikasoEditor?.board.background])
 
   useLayoutEffect(() => {
     rescaleEditor(100)
-  }, [panelcollaps])
+  }, [rescaleEditor, panelcollaps])
 
   const handleCanvasMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     switch (canvasTool) {
