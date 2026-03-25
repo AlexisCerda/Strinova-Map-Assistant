@@ -15,6 +15,8 @@ interface PikasoMapProps {
   fontSize: number
   panelcollaps: boolean
   load: React.Dispatch<React.SetStateAction<void>>
+  style?: React.CSSProperties
+  onAddItem: (item: any) => void
 }
 
 const DrawMap: React.FC<PikasoMapProps> = ({
@@ -28,7 +30,9 @@ const DrawMap: React.FC<PikasoMapProps> = ({
   lineWidth,
   fontSize,
   panelcollaps,
-  load
+  load,
+  style,
+  onAddItem
 }) => {
   const rescaleTO = useRef<ReturnType<typeof setTimeout> | null>(null)
   const rescaleEditor = useCallback((timeout: number = 0) => {
@@ -132,18 +136,14 @@ const DrawMap: React.FC<PikasoMapProps> = ({
         const diff = { x: e.clientX - rect!.left, y: e.clientY - rect!.top }
         const textPos = { x: diff.x * scale.x, y: diff.y * scale.y }
 
-        const label = pikasoEditor?.shapes.label.insert({
-          container: {
-            x: textPos.x,
-            y: textPos.y
-          },
-          text: {
-            text: 'Type here',
-            fill: penColor,
-            fontSize: fontSize * 16
-          }
+        onAddItem({
+          type: 'text',
+          value: 'Type here',
+          x: textPos.x,
+          y: textPos.y,
+          color: penColor,
+          fontSize: fontSize * 16
         })
-        label?.select()
         setTool('SELECT')
         break
     }
@@ -166,9 +166,11 @@ const DrawMap: React.FC<PikasoMapProps> = ({
         const diff = { x: clientPos.clientX - rect!.left, y: clientPos.clientY - rect!.top }
         const imgPos = { x: diff.x * scale.x, y: diff.y * scale.y }
   
-        pikasoEditor?.shapes.image.insert(imgLink, {
-          x: imgPos.x - size / 2,
-          y: imgPos.y - size / 2,
+        onAddItem({
+          type: 'image',
+          value: imgLink,
+          x: imgPos.x,
+          y: imgPos.y,
           width: size * ratio,
           height: size
         })
@@ -192,7 +194,7 @@ const DrawMap: React.FC<PikasoMapProps> = ({
   return (
     <div
       ref={pikasoRef}
-      style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+      style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', touchAction: 'none', ...style }}
       className='drawCanvas'
       onDrop={handleOnDrop}
       onTouchEnd={handleOnDrop}

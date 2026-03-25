@@ -9,6 +9,7 @@ import { initShare, share, rebindShare, cleanUpShare, updateLobbyRefs, updateLiv
 import { mapTools, loadColors } from '../utils/canvasConstants';
 import DrawMap from './Layouts/Canvas/drawCanvas';
 import MapCanvas from './Layouts/Canvas/mapCanvas';
+import CanvasOverlay from './Layouts/Canvas/CanvasOverlay';
 import FooterContent from './Layouts/Footer/FooterContent.tsx';
 import HeaderContent from './Layouts/HeaderContent';
 import SiderContent from './Layouts/Sider/SiderContent.tsx';
@@ -30,11 +31,26 @@ interface AppShellProps {
 	characterData: characterRegistry
 }
 
+export interface CanvasItem {
+	id: string
+	type: 'image' | 'text'
+	name?: string
+	value: string // image URL or text content
+	x: number // 1000x1000 stage space
+	y: number
+	color?: string
+	fontSize?: number
+	width?: number
+	height?: number
+	rotation?: number
+}
+
 const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 	const [drawCanvasRef, drawCanvasEditor] = usePikaso({
 		width: 1000,
 		height: 1000,
 		selection: {
+			interactive: true,
 			transformer: {
 				borderStroke: 'rgba(77, 238, 234, 1)',
 				anchorStroke: 'rgba(77, 238, 234, 1)',
@@ -79,6 +95,8 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 	const [fontSize, setFontSize] = useState(2)
 
 	const [mapPrepareMode, setMapPrepareMode] = useState(true)
+	const [canvasItems, setCanvasItems] = useState<CanvasItem[]>([])
+
 	const [presentMapURL, setPresentMapURL] = useState({
 		imgPrepareLink: mapList[0].imgPrepareLink,
 		imgBlankLink: mapList[0].imgBlankLink
@@ -101,16 +119,32 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 		document.body.setAttribute("theme-mode", theme)
 	}
 
+	const handleAddCanvasItem = (item: Omit<CanvasItem, 'id'>) => {
+		const newItem: CanvasItem = {
+			...item,
+			id: Math.random().toString(36).substring(2, 9)
+		}
+		setCanvasItems(prev => [...prev, newItem])
+	}
+
+	const handleUpdateCanvasItem = (id: string, updates: Partial<CanvasItem>) => {
+		setCanvasItems(prev => prev.map(item => item.id === id ? { ...item, ...updates } : item))
+	}
+
+	const handleDeleteCanvasItem = (id: string) => {
+		setCanvasItems(prev => prev.filter(item => item.id !== id))
+	}
+
 	const saveFile = () => {
-		save({ presentMap, mapPrepareMode, drawCanvasEditor })
+		save({ presentMap, mapPrepareMode, drawCanvasEditor, canvasItems })
 	}
 
 	const loadFile = () => {
-		load({ setPresentMap, setPresentMapURL, setMapPrepareMode, drawCanvasEditor })
+		load({ setPresentMap, setPresentMapURL, setMapPrepareMode, drawCanvasEditor, setCanvasItems })
 	}
 
 	const loadJson = (json: any) => {
-		loadCurrentAppState({ json, setPresentMap, setPresentMapURL, setMapPrepareMode, drawCanvasEditor })
+		loadCurrentAppState({ json, setPresentMap, setPresentMapURL, setMapPrepareMode, drawCanvasEditor, setCanvasItems })
 	}
 
 	const liveShare = () => {
@@ -148,7 +182,7 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 				currentMap={mapPrepareMode ? presentMapURL.imgPrepareLink : presentMapURL.imgBlankLink}
 				pikasoEditor={drawMapEditor}
 				pikasoRef={drawMapRef}
-				style={{ position: 'absolute', top: '0', left: '0' }}
+				style={{ position: 'absolute', top: '0', left: '0', pointerEvents: 'none', zIndex: 1 }}
 				panelcollaps={panelcollaps}
 			/>
 			<DrawMap
@@ -163,6 +197,14 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 				penWidth={penWidth}
 				load={loadJson}
 				panelcollaps={panelcollaps}
+				onAddItem={handleAddCanvasItem}
+				style={{ position: 'absolute', top: '0', left: '0', pointerEvents: 'auto', zIndex: 10 }}
+			/>
+			<CanvasOverlay
+				items={canvasItems}
+				onUpdateItem={handleUpdateCanvasItem}
+				onDeleteItem={handleDeleteCanvasItem}
+				style={{ position: 'absolute', top: '0', left: '0', zIndex: 20 }}
 			/>
 		</div>
 	);
