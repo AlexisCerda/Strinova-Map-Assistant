@@ -11,7 +11,8 @@ export enum PUS {
 	Yvette = "Yvette",
 	Flavia = "Flavia",
 	Yugiri = "Yugiri",
-	Leona = "Leona"
+	Leona = "Leona",
+	Chiyo = "Chiyo"
 }
 
 export enum TheScissors {
@@ -31,7 +32,8 @@ export enum Urbino {
 	Maddelena = "Maddelena",
 	Fuchsia = "Fuchsia",
 	BaiMo = "BaiMo",
-	Galatea = "Galatea"
+	Galatea = "Galatea",
+	Cielle = "Cielle"
 }
 
 type factionData = {

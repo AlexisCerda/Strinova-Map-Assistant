@@ -17,13 +17,13 @@ const character: characterData = {
 				skillIcon: 'https://s2.loli.net/2024/11/10/jBC3dyGxKzmpQf2.png',
 				generateOnCanvas: passive
 			},
+			tactical: {
+				skillIcon: 'https://cdn.sa.net/2024/11/19/T4QIuUewCitmjbM.png',
+				generateOnCanvas: tactical
+			},
 			ultimate: {
 				skillIcon: 'https://s2.loli.net/2024/11/10/T3huK4YzAXmrV8N.png',
 				generateOnCanvas: ultimate
-			},
-			sub: {
-				skillIcon: 'https://cdn.sa.net/2024/11/19/T4QIuUewCitmjbM.png',
-				generateOnCanvas: sub
 			}
 		}
 	}
@@ -41,7 +41,7 @@ function ultimate() {
 	return;
 }
 
-function sub() {
+function tactical() {
 	return;
 }
 

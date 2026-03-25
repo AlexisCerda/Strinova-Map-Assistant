@@ -17,13 +17,13 @@ const character: characterData = {
 				skillIcon: 'https://cdn.sa.net/2025/04/22/agB2vCobZk4efJM.png',
 				generateOnCanvas: passive
 			},
+			tactical: {
+				skillIcon: 'https://cdn.sa.net/2025/04/22/cK4BS6k3DXndMjx.png',
+				generateOnCanvas: tactical
+			},
 			ultimate: {
 				skillIcon: 'https://cdn.sa.net/2025/04/22/vDMeEWlitLqTBIQ.png',
 				generateOnCanvas: ultimate
-			},
-			sub: {
-				skillIcon: 'https://cdn.sa.net/2025/04/22/cK4BS6k3DXndMjx.png',
-				generateOnCanvas: sub
 			}
 		}
 	}
@@ -41,7 +41,7 @@ function ultimate() {
 	return;
 }
 
-function sub() {
+function tactical() {
 	return;
 }
 

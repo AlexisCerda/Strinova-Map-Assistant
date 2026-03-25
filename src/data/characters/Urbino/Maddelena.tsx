@@ -17,15 +17,15 @@ const character: characterData = {
 				skillIcon: 'https://s2.loli.net/2024/09/25/q61FltINbyrA8YV.png',
 				generateOnCanvas: passive
 			},
+			tactical: {
+				skillIcon: 'https://cdn.sa.net/2024/11/19/yerm1tuq97ZnaWp.png',
+				generateOnCanvas: tactical
+			},
 			ultimate: {
 				skillIcon: 'https://s2.loli.net/2024/09/25/tazvXEJNs5HuyeD.png',
 				generateOnCanvas: ultimate
-			},
-			sub: {
-				skillIcon: 'https://cdn.sa.net/2024/11/19/yerm1tuq97ZnaWp.png',
-				generateOnCanvas: sub
 			}
-		}
+		}	
 	},
 	defense: {
 		canvasImage: 'https://s2.loli.net/2024/09/29/dxqSrs3ivIJlF5h.png',
@@ -39,13 +39,13 @@ const character: characterData = {
 				skillIcon: 'https://s2.loli.net/2024/09/25/q61FltINbyrA8YV.png',
 				generateOnCanvas: passive
 			},
+			tactical: {
+				skillIcon: 'https://cdn.sa.net/2024/11/19/yerm1tuq97ZnaWp.png',
+				generateOnCanvas: tactical
+			},
 			ultimate: {
 				skillIcon: 'https://s2.loli.net/2024/09/25/tazvXEJNs5HuyeD.png',
 				generateOnCanvas: ultimate
-			},
-			sub: {
-				skillIcon: 'https://cdn.sa.net/2024/11/19/yerm1tuq97ZnaWp.png',
-				generateOnCanvas: sub
 			}
 		}
 	},
@@ -63,7 +63,7 @@ function ultimate() {
 	return;
 }
 
-function sub() {
+function tactical() {
 	return;
 }
 

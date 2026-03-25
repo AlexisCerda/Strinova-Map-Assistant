@@ -45,16 +45,16 @@ export interface sideData {
 		active: {
 			skillIcon: string;
 			generateOnCanvas: () => void;
-
 		},
+		tactical: {
+			skillIcon: string;
+			generateOnCanvas: () => void;
+		}
 		ultimate: {
 			skillIcon: string;
 			generateOnCanvas: () => void;
 		}
-		sub: {
-			skillIcon: string;
-			generateOnCanvas: () => void;
-		}
+		
 	}
 }
 
