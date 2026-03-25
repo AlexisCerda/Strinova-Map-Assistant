@@ -5,7 +5,8 @@ import { MapName } from "../data/maplist"
 export enum Languages {
 	en_US = 'English',
 	zh_CN = '简体中文',
-	ja_JP = '日本語'
+	ja_JP = '日本語',
+	fr_FR = 'Français'
 }
 
 interface CharacterTypes {

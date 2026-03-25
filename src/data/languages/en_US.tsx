@@ -82,7 +82,7 @@ export default {
 	},
 	supportusdata: {
 		content: <>
-			<div><strong>STRINOVA MAP ASSISTANT</strong>is an open-source React project.</div>
+			<div><strong>STRINOVA MAP ASSISTANT</strong> is an open-source React project.</div>
 			<div>So you can use it freely under license GPL-3.0.</div>
 			<div>Some image source may need further permission.</div>
 			<div>Please ask the official.</div>

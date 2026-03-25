@@ -18,6 +18,15 @@ const contributeList = [
     },
     {
         job: ["code", "translation"],
+        name: "Alexis Cerda",
+        icon: "https://avatars.githubusercontent.com/u/181895397?s=400&u=26145618c018f37e312e8b6bb09e0351dc669975&v=4",
+        github: "https://github.com/alexiscerda/",
+        bili: "",
+        X: "",
+        twich: "",
+    },
+    {
+        job: ["code", "translation"],
         name: "MiekoHikari",
         icon: "https://avatars.githubusercontent.com/u/77004524?v=4",
         github: "https://github.com/MiekoHikari/",

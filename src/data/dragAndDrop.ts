@@ -9,13 +9,13 @@ export const setDragValue = (ref: any) => {
 }
 
 document.body.addEventListener('touchend', (e) => {
-  const currentDragValue = getDragValue()
-  if (!currentDragValue) return
-  const touchElements = document.elementsFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY)
-  const target = touchElements[1]
+  const currentDragValue = getDragValue();
+  if (!currentDragValue) return;
+  const touchElements = document.elementsFromPoint(e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+  const target = touchElements[1];
   if (target && target.className == 'pikaso') {
-    const EventClass = e.constructor as new (type: string, event: Event) => Event
-    const eventClone = new EventClass(e.type, e)
-    target.dispatchEvent(eventClone)
+    const EventClass = e.constructor as new (type: string, event: Event) => Event;
+    const eventClone = new EventClass(e.type, e);
+    target.dispatchEvent(eventClone);
   }
 })

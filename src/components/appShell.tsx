@@ -24,6 +24,7 @@ import { Locale } from '@douyinfe/semi-ui/lib/es/locale/interface';
 import en_US from '@douyinfe/semi-ui/lib/es/locale/source/en_US';
 import zh_CN from '@douyinfe/semi-ui/lib/es/locale/source/zh_CN';
 import ja_JP from '@douyinfe/semi-ui/lib/es/locale/source/ja_JP';
+import fr_FR from '@douyinfe/semi-ui/lib/es/locale/source/fr';
 
 interface AppShellProps {
 	characterData: characterRegistry
@@ -125,7 +126,7 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 			}
 			window.addEventListener('hashchange', onHashChange)
 		}
-		 return () => {
+		return () => {
 			window.removeEventListener('hashchange', onHashChange)
 			cleanUpShare()
 		}
@@ -141,7 +142,7 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 		<div id="capture" style={{ overflow: 'hidden', position: 'relative', top: 0, left: 0, width: '100%', height: '100%' }}>
 			<div className='no-select' style={{ position: "absolute", bottom: "20px", opacity: 0.1, fontSize: "25px", marginLeft: "30px" }}>
 				<div>Strinova Map Assistant</div>
-				<div style={{ fontSize: "18px" }}>strinova.fsltech.cn</div>
+				<div style={{ fontSize: "18px" }}>khaos-experiences.fr/sma</div>
 			</div>
 			<MapCanvas
 				currentMap={mapPrepareMode ? presentMapURL.imgPrepareLink : presentMapURL.imgBlankLink}
@@ -171,7 +172,8 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 	} = {
 		English: en_US,
 		日本語: ja_JP,
-		简体中文: zh_CN
+		简体中文: zh_CN,
+		Français: fr_FR,
 	}
 
 	return (
