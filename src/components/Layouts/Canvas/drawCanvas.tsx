@@ -130,11 +130,17 @@ const DrawMap: React.FC<PikasoMapProps> = ({
         break
       case 'TEXT':
         pikasoEditor?.shapes.pencil.stopDrawing()
-        const rect = (e.target as HTMLCanvasElement)?.getBoundingClientRect()
-        const pikasoSize = pikasoEditor?.board.stage.getSize()
-        const scale = { x: pikasoSize!.width / rect!.width, y: pikasoSize!.height / rect!.height }
+        const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
         const diff = { x: e.clientX - rect!.left, y: e.clientY - rect!.top }
-        const textPos = { x: diff.x * scale.x, y: diff.y * scale.y }
+        
+        const scale = Math.min(rect.width / 1000, rect.height / 1000)
+        const offsetX = (rect.width - 1000 * scale) / 2
+        const offsetY = (rect.height - 1000 * scale) / 2
+        
+        const textPos = { 
+          x: (diff.x - offsetX) / scale, 
+          y: (diff.y - offsetY) / scale 
+        }
 
         onAddItem({
           type: 'text',
@@ -150,6 +156,10 @@ const DrawMap: React.FC<PikasoMapProps> = ({
   }
 
   const handleOnDrop = (e: React.DragEvent<HTMLDivElement>| any) => {
+    const clientPos = e.clientX ? e : e.changedTouches[0]
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
+    const diff = { x: clientPos.clientX - rect.left, y: clientPos.clientY - rect.top }
+
     const dragValue = getDragValue()
     const imgLink = dragValue?.type == 'imageLink' ? dragValue.value : null
     if(imgLink) {
@@ -159,12 +169,14 @@ const DrawMap: React.FC<PikasoMapProps> = ({
         const size = 35
         const ratio = img.width / img.height
 
-        const clientPos = e.clientX ? e : e.changedTouches[0]
-        const rect = (e.target as HTMLCanvasElement)?.getBoundingClientRect()
-        const pikasoSize = pikasoEditor?.board.stage.getSize()
-        const scale = { x: pikasoSize!.width / rect!.width, y: pikasoSize!.height / rect!.height }
-        const diff = { x: clientPos.clientX - rect!.left, y: clientPos.clientY - rect!.top }
-        const imgPos = { x: diff.x * scale.x, y: diff.y * scale.y }
+        const scale = Math.min(rect.width / 1000, rect.height / 1000)
+        const offsetX = (rect.width - 1000 * scale) / 2
+        const offsetY = (rect.height - 1000 * scale) / 2
+        
+        const imgPos = { 
+          x: (diff.x - offsetX) / scale, 
+          y: (diff.y - offsetY) / scale 
+        }
   
         onAddItem({
           type: 'image',
