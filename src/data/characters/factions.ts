@@ -46,14 +46,14 @@ type factionData = {
 export const factionsData: factionData = {
 	PUS: {
 		faction: factions.PUS,
-		previewImage: "https://s2.loli.net/2024/09/25/1El6anYx4qhPbo2.png"
+		previewImage: "/images/remote/4ef46da3_1El6anYx4qhPbo2.png"
 	},
 	TheScissors: {
 		faction: factions.TheScissors,
-		previewImage: "https://s2.loli.net/2024/09/25/PY4HMU7fbQ32Dr1.png"
+		previewImage: "/images/remote/ab662df9_PY4HMU7fbQ32Dr1.png"
 	},
 	Urbino: {
 		faction: factions.Urbino,
-		previewImage: "https://s2.loli.net/2024/09/25/hyPUcLZdMNaeOjI.png"
+		previewImage: "/images/remote/b366d340_hyPUcLZdMNaeOjI.png"
 	}
 }

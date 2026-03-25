@@ -6,23 +6,23 @@ const character: characterData = {
 	faction: factions.TheScissors,
 	id: TheScissors.Lawine,
 	attack: {
-		canvasImage: 'https://s2.loli.net/2024/09/29/DeK5afJoAhpyNcM.png',
-		bodyImage: 'https://cdn.sa.net/2025/04/22/f8dgSBZ2zsvV1jL.png',
+		canvasImage: '/images/remote/2c0a3294_DeK5afJoAhpyNcM.png',
+		bodyImage: '/images/remote/2b9823d2_f8dgSBZ2zsvV1jL.png',
 		skills: {
 			active: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/gOFlGIzPjxbpYKw.png',
+				skillIcon: '/images/remote/7defb0bc_gOFlGIzPjxbpYKw.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/8AxLszwVIg17WGq.png',
+				skillIcon: '/images/remote/070302fd_8AxLszwVIg17WGq.png',
 				generateOnCanvas: passive
 			},
 			tactical: {
-				skillIcon: 'https://cdn.sa.net/2024/11/19/E5OzUcFg3DsjGuH.png',
+				skillIcon: '/images/remote/a82368fe_E5OzUcFg3DsjGuH.png',
 				generateOnCanvas: tactical
 			},
 			ultimate: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/HuEnVYb8Mr5e24I.png',
+				skillIcon: '/images/remote/a83d2571_HuEnVYb8Mr5e24I.png',
 				generateOnCanvas: ultimate
 			}
 		}

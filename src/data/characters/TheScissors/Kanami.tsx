@@ -6,23 +6,23 @@ const character: characterData = {
 	faction: factions.TheScissors,
 	id: TheScissors.Kanami,
 	attack: {
-		canvasImage: 'https://s2.loli.net/2024/09/29/7DHOLqvWMzmlch3.png',
-		bodyImage: 'https://cdn.sa.net/2025/04/22/v843gf6RWlFsPx7.png',
+		canvasImage: '/images/remote/3641a973_7DHOLqvWMzmlch3.png',
+		bodyImage: '/images/remote/50e37fd5_v843gf6RWlFsPx7.png',
 		skills: {
 			active: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/UBJqoYz835GvVxy.png',
+				skillIcon: '/images/remote/e0ef7cad_UBJqoYz835GvVxy.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/OHbINYGSQhFazcd.png',
+				skillIcon: '/images/remote/f43489b8_OHbINYGSQhFazcd.png',
 				generateOnCanvas: passive
 			},
 			tactical: {
-				skillIcon: 'https://cdn.sa.net/2024/11/19/jOP3fQIlYxCvZSN.png',
+				skillIcon: '/images/remote/81331af2_jOP3fQIlYxCvZSN.png',
 				generateOnCanvas: tactical
 			},
 			ultimate: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/YH3Phg5XQumsbCM.png',
+				skillIcon: '/images/remote/84dbc8a7_YH3Phg5XQumsbCM.png',
 				generateOnCanvas: ultimate
 			}
 		}

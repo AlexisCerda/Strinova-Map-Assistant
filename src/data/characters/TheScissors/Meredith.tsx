@@ -6,23 +6,23 @@ const character: characterData = {
 	faction: factions.TheScissors,
 	id: TheScissors.Meredith,
 	attack: {
-		canvasImage: 'https://s2.loli.net/2024/09/29/C4QmVOhp1rB9Gd6.png',
-		bodyImage: 'https://cdn.sa.net/2025/04/22/UvzslOa738JMjBn.png',
+		canvasImage: '/images/remote/e65fec21_C4QmVOhp1rB9Gd6.png',
+		bodyImage: '/images/remote/e182fcc9_UvzslOa738JMjBn.png',
 		skills: {
 			active: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/KWYZTSQmjOHJ2RX.png',
+				skillIcon: '/images/remote/6e989e80_KWYZTSQmjOHJ2RX.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/O8kRqCVEDoK6T3p.png',
+				skillIcon: '/images/remote/5d1830bd_O8kRqCVEDoK6T3p.png',
 				generateOnCanvas: passive
 			},
 			tactical: {
-				skillIcon: 'https://cdn.sa.net/2024/11/19/7sSae9nRhO2Ddzg.png',
+				skillIcon: '/images/remote/df91e02c_7sSae9nRhO2Ddzg.png',
 				generateOnCanvas: tactical
 			},
 			ultimate: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/V8KZrx9sY7QBlaP.png',
+				skillIcon: '/images/remote/86fb1ee3_V8KZrx9sY7QBlaP.png',
 				generateOnCanvas: ultimate
 			}
 		}

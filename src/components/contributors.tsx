@@ -37,7 +37,7 @@ const contributeList = [
     {
         job: ["translation"],
         name: "サルミナ(salutemenow)",
-        icon: "https://s2.loli.net/2024/09/28/58XqieRV36aOCUx.webp",
+        icon: "/images/remote/7bbeb162_58XqieRV36aOCUx.webp",
         github: "",
         bili: "",
         X: "https://x.com/salutemenowjp",
@@ -46,7 +46,7 @@ const contributeList = [
     {
         job: ["translation"],
         name: "restart0x",
-        icon: "https://s2.loli.net/2024/11/08/HgB9Dqo6CPsL7Ql.jpg",
+        icon: "/images/remote/606d01fb_HgB9Dqo6CPsL7Ql.jpg",
         github: "",
         bili: "https://space.bilibili.com/497387234",
         X: "",
@@ -73,7 +73,7 @@ const contributeList = [
     {
         job: ["code"],
         name: "Haru Yakumo",
-        icon: "https://cdn.sa.net/2025/04/22/fF9G5vbJRCckiLI.webp",
+        icon: "/images/remote/e9b57402_fF9G5vbJRCckiLI.webp",
         github: "https://github.com/huequica",
         bili: "",
         X: "https://x.com/huequica",

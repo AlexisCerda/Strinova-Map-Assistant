@@ -19,12 +19,12 @@ const SupportUs: React.FC = () => {
       <Divider margin='12px' />
       <div><Title heading={6}>{langData.global}</Title></div>
       <div onClick={() => { open("https://ko-fi.com/MiekoHikari", "_blank") }}>
-        <img src='https://s2.loli.net/2024/10/01/LpQN1lIvu97HdMy.webp' style={{ height: "50px", marginTop: "10px" }} />
+        <img src='/images/remote/1b6597bf_LpQN1lIvu97HdMy.webp' style={{ height: "50px", marginTop: "10px" }} />
       </div>
       <Divider margin='12px' />
       <div><Title heading={6}>{langData.CN}</Title></div>
       <div onClick={() => { open("https://afdian.com/a/fsltech", "_blank") }} style={{ display: "flex", height: "50px" }}>
-        <img src='https://s2.loli.net/2024/10/01/Xw74impc6osJDCL.png' style={{ height: "50px", marginTop: "10px", marginLeft: "5px" }} />
+        <img src='/images/remote/82eff57c_Xw74impc6osJDCL.png' style={{ height: "50px", marginTop: "10px", marginLeft: "5px" }} />
         <div style={{ display: "flex", height: "100%", placeItems: "center", fontSize: "20px", marginLeft: "20px", marginTop: "10px", color: "rgba(var(--semi-grey-9), 1)" }}><strong>爱发电</strong></div>
       </div>
     </>

@@ -6,23 +6,23 @@ const character: characterData = {
 	faction: factions.TheScissors,
 	id: TheScissors.Eika,
 	attack: {
-		canvasImage: 'https://s2.loli.net/2024/09/29/SrnDsxX5bAiBNcE.png',
-		bodyImage: 'https://cdn.sa.net/2025/04/22/SMVIPh4fqWzRruy.png',
+		canvasImage: '/images/remote/a89bcd32_SrnDsxX5bAiBNcE.png',
+		bodyImage: '/images/remote/3e3ce001_SMVIPh4fqWzRruy.png',
 		skills: {
 			active: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/SPYXJZwHGObnrmV.png',
+				skillIcon: '/images/remote/6a86b439_SPYXJZwHGObnrmV.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/JYfa5PdE6r4Kcio.png',
+				skillIcon: '/images/remote/a5c351a1_JYfa5PdE6r4Kcio.png',
 				generateOnCanvas: passive
 			},
 			ultimate: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/sFgyUNK7iWtcvfp.png',
+				skillIcon: '/images/remote/f519087c_sFgyUNK7iWtcvfp.png',
 				generateOnCanvas: ultimate
 			},
 			tactical: {
-				skillIcon: 'https://cdn.sa.net/2024/11/19/to7dWPDVuUFRsIn.png',
+				skillIcon: '/images/remote/ab52e6c0_to7dWPDVuUFRsIn.png',
 				generateOnCanvas: tactical
 			}
 		}

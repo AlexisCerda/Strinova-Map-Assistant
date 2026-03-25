@@ -5,23 +5,23 @@ const character: characterData = {
 	faction: factions.PUS,
 	id: PUS.Michele,
 	defense: {
-		canvasImage: 'https://s2.loli.net/2024/09/29/29JH5SlaTdCwgFR.png',
-		bodyImage: 'https://cdn.sa.net/2025/04/22/2MLSe7fg8tsQ3br.png',
+		canvasImage: '/images/remote/72af1d33_29JH5SlaTdCwgFR.png',
+		bodyImage: '/images/remote/c4014084_2MLSe7fg8tsQ3br.png',
 		skills: {
 			active: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/8iCzWDaNQPSxqvw.png',
+				skillIcon: '/images/remote/721cbee2_8iCzWDaNQPSxqvw.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/ANhKZ6GDzOIjPtf.png',
+				skillIcon: '/images/remote/e0b6aedf_ANhKZ6GDzOIjPtf.png',
 				generateOnCanvas: passive
 			},
 			tactical: {
-				skillIcon: 'https://cdn.sa.net/2024/11/19/fvrVnE8Ocl21Dpz.png',
+				skillIcon: '/images/remote/421def9e_fvrVnE8Ocl21Dpz.png',
 				generateOnCanvas: tactical
 			},
 			ultimate: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/UGeEvYfXiSgD4zr.png',
+				skillIcon: '/images/remote/23cfae05_UGeEvYfXiSgD4zr.png',
 				generateOnCanvas: ultimate
 			}
 		}

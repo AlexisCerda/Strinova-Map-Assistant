@@ -5,23 +5,23 @@ const character: characterData = {
 		faction: factions.PUS,
 		id: PUS.Nobunaga,
 		defense: {
-			canvasImage: 'https://s2.loli.net/2024/09/29/7UuX5VTR8AYWD2o.png',
-			bodyImage: 'https://cdn.sa.net/2025/04/22/nvuOWPyjXK3Fif9.png',
+			canvasImage: '/images/remote/7d4208d9_7UuX5VTR8AYWD2o.png',
+			bodyImage: '/images/remote/2e63f1ea_nvuOWPyjXK3Fif9.png',
 			skills: {
 				active: {
-					skillIcon: 'https://s2.loli.net/2024/09/25/VJFzGhSyXmsiHpO.png',
+					skillIcon: '/images/remote/e8762604_VJFzGhSyXmsiHpO.png',
 					generateOnCanvas: active
 				},
 				passive: {
-					skillIcon: 'https://s2.loli.net/2024/09/25/AHsc9o8W25UlpNa.png',
+					skillIcon: '/images/remote/0acc8676_AHsc9o8W25UlpNa.png',
 					generateOnCanvas: passive
 				},
 				tactical: {
-					skillIcon: 'https://cdn.sa.net/2024/11/19/MTjuAvcKSq6RNiU.png',
+					skillIcon: '/images/remote/62a963ca_MTjuAvcKSq6RNiU.png',
 					generateOnCanvas: tactical
 				},
 				ultimate: {
-					skillIcon: 'https://s2.loli.net/2024/09/25/Vr78sb9T32ADMuy.png',
+					skillIcon: '/images/remote/ae864240_Vr78sb9T32ADMuy.png',
 					generateOnCanvas: ultimate
 				}
 			}

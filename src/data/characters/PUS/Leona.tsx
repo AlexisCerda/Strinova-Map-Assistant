@@ -6,23 +6,23 @@ const character: characterData = {
 	faction: factions.PUS,
 	id: PUS.Leona,
 	defense: {
-		canvasImage: 'https://cdn.sa.net/2025/01/23/WY9ijCwS7e4OPNM.png',
-		bodyImage: 'https://cdn.sa.net/2025/04/22/snfMAvm1384Qc5h.png',
+		canvasImage: '/images/remote/7994385d_WY9ijCwS7e4OPNM.png',
+		bodyImage: '/images/remote/91422b07_snfMAvm1384Qc5h.png',
 		skills: {
 			active: {
-				skillIcon: 'https://cdn.sa.net/2025/01/23/8bA3kca54WlQi96.png',
+				skillIcon: '/images/remote/0b05116b_8bA3kca54WlQi96.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: 'https://cdn.sa.net/2025/01/23/A45ZR1MXwovaijc.png',
+				skillIcon: '/images/remote/f2bfc901_A45ZR1MXwovaijc.png',
 				generateOnCanvas: passive
 			},
 			tactical: {
-				skillIcon: 'https://cdn.sa.net/2025/01/23/so6fhJX7Lp1YAPN.png',
+				skillIcon: '/images/remote/0b6bd9eb_so6fhJX7Lp1YAPN.png',
 				generateOnCanvas: tactical
 			},
 			ultimate: {
-				skillIcon: 'https://cdn.sa.net/2025/01/23/snt2Q9EovlWj7Nx.png',
+				skillIcon: '/images/remote/b30ab458_snt2Q9EovlWj7Nx.png',
 				generateOnCanvas: ultimate
 			}
 		}

@@ -6,46 +6,46 @@ const character: characterData = {
 	faction: factions.Urbino,
 	id: Urbino.BaiMo,
 	attack: {
-		canvasImage: 'https://s2.loli.net/2024/09/29/jt4621ivFRfbEqD.png',
-		bodyImage: 'https://cdn.sa.net/2025/04/22/o5QTWCxraMFvZuw.png',
+		canvasImage: '/images/remote/7c8c2d42_jt4621ivFRfbEqD.png',
+		bodyImage: '/images/remote/87e6036d_o5QTWCxraMFvZuw.png',
 		skills: {
 			active: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/eUzu75aSXVw2kQF.png',
+				skillIcon: '/images/remote/f231bd6d_eUzu75aSXVw2kQF.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/xvVheX57uGJMI2k.png',
+				skillIcon: '/images/remote/1521309d_xvVheX57uGJMI2k.png',
 				generateOnCanvas: passive
 			},
 			tactical: {
-				skillIcon: 'https://cdn.sa.net/2024/11/19/y1ojEJpIOrqbfUm.png',
+				skillIcon: '/images/remote/000421b5_y1ojEJpIOrqbfUm.png',
 				generateOnCanvas: tactical
 			},
 			ultimate: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/VkyGJKzHYr4pnlm.png',
+				skillIcon: '/images/remote/45436d9e_VkyGJKzHYr4pnlm.png',
 				generateOnCanvas: ultimate
 			}
 			
 		}
 	},
 	defense: {	
-		canvasImage: 'https://s2.loli.net/2024/09/29/2KrCPXp5k1e6wfm.png',
-		bodyImage: 'https://cdn.sa.net/2025/04/22/o5QTWCxraMFvZuw.png',
+		canvasImage: '/images/remote/01ca04c5_2KrCPXp5k1e6wfm.png',
+		bodyImage: '/images/remote/87e6036d_o5QTWCxraMFvZuw.png',
 		skills: {
 			active: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/eUzu75aSXVw2kQF.png',
+				skillIcon: '/images/remote/f231bd6d_eUzu75aSXVw2kQF.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/xvVheX57uGJMI2k.png',
+				skillIcon: '/images/remote/1521309d_xvVheX57uGJMI2k.png',
 				generateOnCanvas: passive
 			},
 			tactical: {
-				skillIcon: 'https://cdn.sa.net/2024/11/19/y1ojEJpIOrqbfUm.png',
+				skillIcon: '/images/remote/000421b5_y1ojEJpIOrqbfUm.png',
 				generateOnCanvas: tactical
 			},
 			ultimate: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/VkyGJKzHYr4pnlm.png',
+				skillIcon: '/images/remote/45436d9e_VkyGJKzHYr4pnlm.png',
 				generateOnCanvas: ultimate
 			}
 		}

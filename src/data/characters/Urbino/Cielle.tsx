@@ -6,45 +6,45 @@ const character: characterData = {
   faction: factions.Urbino,
   id: Urbino.Cielle,
   attack: {
-    canvasImage: 'https://s2.loli.net/2024/09/29/PI6eiLuZfcAQ2aR.png',
-    bodyImage: 'https://cdn.sa.net/2025/04/22/xYLHks7NzduUmWP.png',
+    canvasImage: '/images/remote/0933c39d_PI6eiLuZfcAQ2aR.png',
+    bodyImage: '/images/remote/4a9f2b64_xYLHks7NzduUmWP.png',
     skills: {
       active: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/WmtSU2hFLBPaf85.png',
+        skillIcon: '/images/remote/7083ac7c_WmtSU2hFLBPaf85.png',
         generateOnCanvas: active
       },
       passive: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/O5dXCxh3R1wVINQ.png',
+        skillIcon: '/images/remote/a26eb4e2_O5dXCxh3R1wVINQ.png',
         generateOnCanvas: passive
       },
       tactical: {
-        skillIcon: 'https://cdn.sa.net/2024/11/19/xm5Io68zcXSZAn1.png',
+        skillIcon: '/images/remote/9c6b29e6_xm5Io68zcXSZAn1.png',
         generateOnCanvas: tactical
       },
       ultimate: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/bJalMyBfZ7iXVtx.png',
+        skillIcon: '/images/remote/f08e0d0b_bJalMyBfZ7iXVtx.png',
         generateOnCanvas: ultimate
       }
     }
   },
   defense: {
-    canvasImage: 'https://s2.loli.net/2024/09/29/Zt93QEgreUnvaxX.png',
-    bodyImage: 'https://cdn.sa.net/2025/04/22/xYLHks7NzduUmWP.png',
+    canvasImage: '/images/remote/1fddb488_Zt93QEgreUnvaxX.png',
+    bodyImage: '/images/remote/4a9f2b64_xYLHks7NzduUmWP.png',
     skills: {
       active: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/WmtSU2hFLBPaf85.png',
+        skillIcon: '/images/remote/7083ac7c_WmtSU2hFLBPaf85.png',
         generateOnCanvas: active
       },
       passive: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/O5dXCxh3R1wVINQ.png',
+        skillIcon: '/images/remote/a26eb4e2_O5dXCxh3R1wVINQ.png',
         generateOnCanvas: passive
       },
       tactical: {
-        skillIcon: 'https://cdn.sa.net/2024/11/19/xm5Io68zcXSZAn1.png',
+        skillIcon: '/images/remote/9c6b29e6_xm5Io68zcXSZAn1.png',
         generateOnCanvas: tactical
       },
       ultimate: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/bJalMyBfZ7iXVtx.png',
+        skillIcon: '/images/remote/f08e0d0b_bJalMyBfZ7iXVtx.png',
         generateOnCanvas: ultimate
       }
     }

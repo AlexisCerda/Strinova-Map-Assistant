@@ -6,23 +6,23 @@ const character: characterData = {
 	faction: factions.TheScissors,
 	id: TheScissors.Reiichi,
 	attack: {
-		canvasImage: 'https://s2.loli.net/2024/09/29/txSOyYkT4pXhGBn.png',
-		bodyImage: 'https://cdn.sa.net/2025/04/22/Tu2C4q3OdFX6Ulk.png',
+		canvasImage: '/images/remote/3788ee06_txSOyYkT4pXhGBn.png',
+		bodyImage: '/images/remote/0954400a_Tu2C4q3OdFX6Ulk.png',
 		skills: {
 			active: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/C6qts5xeVpS1N4E.png',
+				skillIcon: '/images/remote/70040a4d_C6qts5xeVpS1N4E.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/iuSvZDYnFTzmBrl.png',
+				skillIcon: '/images/remote/bb0edf84_iuSvZDYnFTzmBrl.png',
 				generateOnCanvas: passive
 			},
 			tactical: {
-				skillIcon: 'https://cdn.sa.net/2024/11/19/daOIybnpUr8QtVz.png',
+				skillIcon: '/images/remote/0f8129a0_daOIybnpUr8QtVz.png',
 				generateOnCanvas: tactical
 			},
 			ultimate: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/bESOlDh9oURvFC3.png',
+				skillIcon: '/images/remote/0a8b8c21_bESOlDh9oURvFC3.png',
 				generateOnCanvas: ultimate
 			}
 		}

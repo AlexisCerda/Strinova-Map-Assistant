@@ -6,23 +6,23 @@ const character: characterData = {
 	faction: factions.PUS,
 	id: PUS.Yvette,
 	defense: {
-		canvasImage: 'https://s2.loli.net/2024/09/29/eIVFmswk3tUlOcR.png',
-		bodyImage: 'https://cdn.sa.net/2025/04/22/AjGNVF4JLazbfHP.png',
+		canvasImage: '/images/remote/27720b57_eIVFmswk3tUlOcR.png',
+		bodyImage: '/images/remote/fa6cc966_AjGNVF4JLazbfHP.png',
 		skills: {
 			active: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/ESH6FNKQjbafMZn.png',
+				skillIcon: '/images/remote/53aa8a5b_ESH6FNKQjbafMZn.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/2hqoyUWsnbA83BP.png',
+				skillIcon: '/images/remote/30617d8a_2hqoyUWsnbA83BP.png',
 				generateOnCanvas: passive
 			},
 			tactical: {
-				skillIcon: 'https://cdn.sa.net/2024/11/19/Hzo6W4y8ib5ceqf.png',
+				skillIcon: '/images/remote/d94a72ee_Hzo6W4y8ib5ceqf.png',
 				generateOnCanvas: tactical
 			},
 			ultimate: {
-				skillIcon: 'https://s2.loli.net/2024/09/25/32VnSv59tPwTIhl.png',
+				skillIcon: '/images/remote/15a053ce_32VnSv59tPwTIhl.png',
 				generateOnCanvas: ultimate
 			}
 		}
