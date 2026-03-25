@@ -15,6 +15,18 @@ const CanvasOverlay: React.FC<CanvasOverlayProps> = ({ items, onUpdateItem, onDe
   const [transform, setTransform] = useState({ x: 0, y: 0, scale: 1 })
 
   useEffect(() => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement
+      // If clicking on the canvas container but not on an item, deselect
+      if (target.closest('.drawCanvas') && !target.closest('.canvas-item-container')) {
+        setSelectedId(null)
+      }
+    }
+    window.addEventListener('mousedown', handleOutsideClick)
+    return () => window.removeEventListener('mousedown', handleOutsideClick)
+  }, [])
+
+  useEffect(() => {
     const sync = () => {
       if (!containerRef.current) return
       const rect = containerRef.current.getBoundingClientRect()

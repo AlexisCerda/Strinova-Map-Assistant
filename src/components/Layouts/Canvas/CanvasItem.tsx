@@ -11,10 +11,13 @@ interface CanvasItemProps {
 
 const CanvasItem: React.FC<CanvasItemProps> = ({ item, onUpdate, onDelete, isSelected, onSelect }) => {
   const [isDragging, setIsDragging] = useState(false)
+  const [isEditing, setIsEditing] = useState(false)
+  const [editValue, setEditValue] = useState(item.value)
   const dragStartPos = useRef({ x: 0, y: 0 })
   const itemStartPos = useRef({ x: 0, y: 0 })
 
   const handlePointerDown = (e: React.PointerEvent) => {
+    if (isEditing) return
     e.stopPropagation()
     onSelect(item.id)
     setIsDragging(true)
@@ -24,14 +27,13 @@ const CanvasItem: React.FC<CanvasItemProps> = ({ item, onUpdate, onDelete, isSel
   }
 
   const handlePointerMove = (e: React.PointerEvent) => {
-    if (!isDragging) return
+    if (!isDragging || isEditing) return
     
     // Calculate movement in pixels
     const dx = e.clientX - dragStartPos.current.x
     const dy = e.clientY - dragStartPos.current.y
     
     // Convert pixels to 1000x1000 units
-    // We need the container size for this
     const container = (e.currentTarget.parentElement as HTMLElement)
     const rect = container.getBoundingClientRect()
     
@@ -46,7 +48,9 @@ const CanvasItem: React.FC<CanvasItemProps> = ({ item, onUpdate, onDelete, isSel
 
   const handlePointerUp = (e: React.PointerEvent) => {
     setIsDragging(false)
-    ;(e.target as HTMLElement).releasePointerCapture(e.pointerId)
+    if ((e.target as HTMLElement).hasPointerCapture(e.pointerId)) {
+      ;(e.target as HTMLElement).releasePointerCapture(e.pointerId)
+    }
   }
 
   const style: React.CSSProperties = {
@@ -54,7 +58,7 @@ const CanvasItem: React.FC<CanvasItemProps> = ({ item, onUpdate, onDelete, isSel
     left: `${(item.x / 1000) * 100}%`,
     top: `${(item.y / 1000) * 100}%`,
     transform: 'translate(-50%, -50%)',
-    cursor: isDragging ? 'grabbing' : 'grab',
+    cursor: isEditing ? 'text' : isDragging ? 'grabbing' : 'grab',
     userSelect: 'none',
     pointerEvents: 'auto',
     border: isSelected ? '2px solid rgba(77, 238, 234, 1)' : '2px solid transparent',
@@ -69,11 +73,18 @@ const CanvasItem: React.FC<CanvasItemProps> = ({ item, onUpdate, onDelete, isSel
 
   return (
     <div
+      className="canvas-item-container"
       style={style}
       onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
-      onKeyDown={(e) => e.key === 'Delete' && isSelected && onDelete(item.id)}
+      onKeyDown={(e) => e.key === 'Delete' && isSelected && !isEditing && onDelete(item.id)}
+      onDoubleClick={() => {
+        if (item.type === 'text') {
+          setIsEditing(true)
+          setEditValue(item.value)
+        }
+      }}
       tabIndex={0}
     >
       {item.type === 'image' ? (
@@ -82,14 +93,87 @@ const CanvasItem: React.FC<CanvasItemProps> = ({ item, onUpdate, onDelete, isSel
           alt={item.name} 
           style={{ width: item.width ? `${item.width}px` : '35px', pointerEvents: 'none' }} 
         />
+      ) : isEditing ? (
+        <input
+          autoFocus
+          value={editValue}
+          onChange={(e) => setEditValue(e.target.value)}
+          onBlur={() => {
+            setIsEditing(false)
+            onUpdate(item.id, { value: editValue })
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              (e.currentTarget as HTMLInputElement).blur()
+            }
+          }}
+          style={{
+            background: 'rgba(255, 255, 255, 0.9)',
+            border: 'none',
+            outline: 'none',
+            color: item.color || 'white',
+            fontSize: item.fontSize,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            width: 'auto',
+            minWidth: '50px'
+          }}
+        />
       ) : (
         <div style={{ color: item.color, fontSize: item.fontSize, fontWeight: 'bold', whiteSpace: 'nowrap' }}>
           {item.value}
         </div>
       )}
       {isSelected && (
+        <div style={{ 
+          position: 'absolute', 
+          bottom: '-30px', 
+          display: 'flex', 
+          gap: '5px', 
+          background: 'rgba(0,0,0,0.6)', 
+          padding: '2px 5px', 
+          borderRadius: '10px',
+          pointerEvents: 'auto'
+        }}>
+          <button 
+            onClick={(e) => {
+              e.stopPropagation()
+              const step = item.type === 'text' ? 2 : 5
+              if (item.type === 'text') {
+                onUpdate(item.id, { fontSize: (item.fontSize || 16) + step })
+              } else {
+                onUpdate(item.id, { 
+                  width: (item.width || 35) + step,
+                  height: (item.height || 35) + (step / (item.width! / item.height!)) 
+                })
+              }
+            }}
+            style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', fontWeight: 'bold' }}
+          >
+            +
+          </button>
+          <button 
+            onClick={(e) => {
+              e.stopPropagation()
+              const step = item.type === 'text' ? 2 : 5
+              if (item.type === 'text') {
+                onUpdate(item.id, { fontSize: Math.max(8, (item.fontSize || 16) - step) })
+              } else {
+                onUpdate(item.id, { 
+                  width: Math.max(10, (item.width || 35) - step),
+                  height: Math.max(10, (item.height || 35) - (step / (item.width! / item.height!))) 
+                })
+              }
+            }}
+            style={{ background: 'none', border: 'none', color: 'white', cursor: 'pointer', fontWeight: 'bold' }}
+          >
+            -
+          </button>
+        </div>
+      )}
+      {isSelected && (
         <button 
-          onClick={() => onDelete(item.id)}
+          onClick={(e) => { e.stopPropagation(); onDelete(item.id) }}
           style={{ 
             position: 'absolute', 
             top: '-10px', 
@@ -104,7 +188,8 @@ const CanvasItem: React.FC<CanvasItemProps> = ({ item, onUpdate, onDelete, isSel
             fontSize: '12px',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            zIndex: 110
           }}
         >
           ×
