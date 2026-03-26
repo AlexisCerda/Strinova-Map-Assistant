@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { CanvasItem as CanvasItemType } from '../../appShell'
 import CanvasItem from './CanvasItem'
 
@@ -7,12 +7,11 @@ interface CanvasOverlayProps {
   onUpdateItem: (id: string, updates: Partial<CanvasItemType>) => void
   onDeleteItem: (id: string) => void
   style?: React.CSSProperties
+  canvasTransform: { x: number, y: number, scale: number }
 }
 
-const CanvasOverlay: React.FC<CanvasOverlayProps> = ({ items, onUpdateItem, onDeleteItem, style }) => {
+const CanvasOverlay: React.FC<CanvasOverlayProps> = ({ items, onUpdateItem, onDeleteItem, style, canvasTransform }) => {
   const [selectedId, setSelectedId] = useState<string | null>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [transform, setTransform] = useState({ x: 0, y: 0, scale: 1 })
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
@@ -26,33 +25,14 @@ const CanvasOverlay: React.FC<CanvasOverlayProps> = ({ items, onUpdateItem, onDe
     return () => window.removeEventListener('mousedown', handleOutsideClick)
   }, [])
 
-  useEffect(() => {
-    const sync = () => {
-      if (!containerRef.current) return
-      const rect = containerRef.current.getBoundingClientRect()
-      
-      // We know Pikaso stage is 1000x1000 and it "fits" into the container
-      const scale = Math.min(rect.width / 1000, rect.height / 1000)
-      const x = (rect.width - 1000 * scale) / 2
-      const y = (rect.height - 1000 * scale) / 2
-      
-      setTransform({ x, y, scale })
-    }
-    
-    sync()
-    window.addEventListener('resize', sync)
-    // Small delay to ensure Pikaso has finished its own rescale
-    const timeout = setTimeout(sync, 100)
-    
-    return () => {
-      window.removeEventListener('resize', sync)
-      clearTimeout(timeout)
-    }
-  }, [items.length]) // Also sync when items added/removed as a proxy for redraws
+  const transform = {
+    x: 0, // Parent is already centered
+    y: 0,
+    scale: canvasTransform.scale
+  }
 
   return (
     <div
-      ref={containerRef}
       className="canvas-overlay no-select"
       style={{ 
         ...style, 

@@ -5,7 +5,6 @@ import { Layout, LocaleProvider } from '@douyinfe/semi-ui';
 import { characterRegistry } from '../data/characters/characterRegistry';
 import { MapName, mapList } from '../data/maplist';
 import { save, load, loadCurrentAppState } from '../data/stateManagement';
-import { initShare, share, rebindShare, cleanUpShare, updateLobbyRefs, delayUpdateLiveMap } from '../data/liveShare.ts';
 import { mapTools, loadColors } from '../utils/canvasConstants';
 import DrawMap from './Layouts/Canvas/drawCanvas';
 import MapCanvas from './Layouts/Canvas/mapCanvas';
@@ -14,6 +13,7 @@ import FooterContent from './Layouts/Footer/FooterContent.tsx';
 import HeaderContent from './Layouts/HeaderContent';
 import SiderContent from './Layouts/Sider/SiderContent.tsx';
 import SiderTools from './Layouts/SiderTools';
+import Magnifier from './Magnifier/Magnifier';
 import usePikaso from 'pikaso-react-hook';
 import { getLanguage, LanguageContext, saveLanguage } from '../contexts/LanguageContext.ts'
 import { getTheme, saveTheme, ThemeContext, ThemeType } from '../contexts/ThemeContext.ts'
@@ -83,6 +83,8 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 	const [presentMap, setPresentMap] = useState(MapName.WindyTown)
 	const [presentTheme, setPresentTheme] = useState<ThemeType>(getTheme)
 	const [panelcollaps, setPanelcollaps] = useState(false)
+	const [magnifierVisible, setMagnifierVisible] = useState(false)
+	const [magnifierTargetPos, setMagnifierTargetPos] = useState({ x: 500, y: 500 })
 
 	const colorPalette = loadColors()
 	const [canvasTool, setTool] = useState<mapTools>('SELECT')
@@ -147,70 +149,89 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 		loadCurrentAppState({ json, setPresentMap, setPresentMapURL, setMapPrepareMode, drawCanvasEditor, setCanvasItems })
 	}
 
-	const liveShare = () => {
-		share({ ui: true })
-	}
-	
+	// Shared centering logic
+	const [canvasTransform, setCanvasTransform] = useState({ x: 0, y: 0, scale: 1 })
 	useLayoutEffect(() => {
-		const onHashChange = () => { share()}
-		if(drawCanvasEditor) {
-			initShare({ presentMap, setPresentMap, setPresentMapURL, mapPrepareMode, setMapPrepareMode, drawCanvasEditor, canvasItems, setCanvasItems })
-			if (location.hash) {
-				share()
-			}
-			window.addEventListener('hashchange', onHashChange)
+		const sync = () => {
+			const container = document.getElementById('capture')
+			if (!container) return
+			const rect = container.getBoundingClientRect()
+			const scale = Math.min(rect.width / 1000, rect.height / 1000)
+			const x = (rect.width - 1000 * scale) / 2
+			const y = (rect.height - 1000 * scale) / 2
+			setCanvasTransform({ x, y, scale })
 		}
-		return () => {
-			window.removeEventListener('hashchange', onHashChange)
-			cleanUpShare()
-		}
-	}, [drawCanvasEditor])
-
-	// Stable effect for rebinding listeners
-	useLayoutEffect(() => {
-		rebindShare()
-	}, [drawCanvasEditor])
-
-	// Reactive effect for state updates
-	useLayoutEffect(() => {
-		updateLobbyRefs({presentMap, mapPrepareMode, canvasItems, setCanvasItems, drawCanvasEditor})
-		delayUpdateLiveMap()
-	}, [presentMap, setPresentMap, presentMapURL, setPresentMapURL, mapPrepareMode, setMapPrepareMode, canvasItems, setCanvasItems, drawCanvasEditor])
+		sync()
+		window.addEventListener('resize', sync)
+		return () => window.removeEventListener('resize', sync)
+	}, [panelcollaps])
 
 	const canvases = (
-		<div id="capture" style={{ overflow: 'hidden', position: 'relative', top: 0, left: 0, width: '100%', height: '100%' }}>
+		<div id="capture" 
+			onPointerDown={(e) => {
+				// Only update magnifier target if it's visible AND the Alt key is pressed.
+				// This prevents the magnifier from jumping when selecting icons or drawing.
+				if (magnifierVisible && e.altKey) {
+					// Convert click to logical 0-1000
+					const rect = e.currentTarget.getBoundingClientRect()
+					const x = ((e.clientX - rect.left - canvasTransform.x) / canvasTransform.scale / 1000) * 1000
+					const y = ((e.clientY - rect.top - canvasTransform.y) / canvasTransform.scale / 1000) * 1000
+					setMagnifierTargetPos({ x, y })
+				}
+			}}
+			style={{ 
+			overflow: 'hidden', 
+			position: 'relative', 
+			top: 0, 
+			left: 0, 
+			width: '100%', 
+			height: '100%',
+			userSelect: 'none',
+			WebkitUserSelect: 'none'
+		}}>
 			<div className='no-select' style={{ position: "absolute", bottom: "20px", opacity: 0.1, fontSize: "25px", marginLeft: "30px" }}>
 				<div>Strinova Map Assistant</div>
 				<div style={{ fontSize: "18px" }}>khaos-experiences.fr/sma</div>
 			</div>
-			<MapCanvas
-				currentMap={mapPrepareMode ? presentMapURL.imgPrepareLink : presentMapURL.imgBlankLink}
-				pikasoEditor={drawMapEditor}
-				pikasoRef={drawMapRef}
-				style={{ position: 'absolute', top: '0', left: '0', pointerEvents: 'none', zIndex: 1 }}
-				panelcollaps={panelcollaps}
-			/>
-			<DrawMap
-				pikasoRef={drawCanvasRef}
-				pikasoEditor={drawCanvasEditor}
-				currentMap={mapPrepareMode ? presentMapURL.imgPrepareLink : presentMapURL.imgBlankLink}
-				canvasTool={canvasTool}
-				setTool={setTool}
-				lineWidth={lineWidth}
-				fontSize={fontSize}
-				penColor={penColor}
-				penWidth={penWidth}
-				load={loadJson}
-				panelcollaps={panelcollaps}
-				onAddItem={handleAddCanvasItem}
-				style={{ position: 'absolute', top: '0', left: '0', pointerEvents: 'auto', zIndex: 10 }}
-			/>
-			<CanvasOverlay
-				items={canvasItems}
-				onUpdateItem={handleUpdateCanvasItem}
-				onDeleteItem={handleDeleteCanvasItem}
-				style={{ position: 'absolute', top: '0', left: '0', zIndex: 20 }}
-			/>
+			<div style={{
+				position: 'absolute',
+				left: `${canvasTransform.x}px`,
+				top: `${canvasTransform.y}px`,
+				width: `${1000 * canvasTransform.scale}px`,
+				height: `${1000 * canvasTransform.scale}px`,
+			}}>
+				<MapCanvas
+					currentMap={mapPrepareMode ? presentMapURL.imgPrepareLink : presentMapURL.imgBlankLink}
+					pikasoEditor={drawMapEditor}
+					pikasoRef={drawMapRef}
+					style={{ position: 'absolute', top: '0', left: '0', pointerEvents: 'none', zIndex: 1 }}
+					panelcollaps={panelcollaps}
+					canvasTransform={canvasTransform}
+				/>
+				<DrawMap
+					pikasoRef={drawCanvasRef}
+					pikasoEditor={drawCanvasEditor}
+					currentMap={mapPrepareMode ? presentMapURL.imgPrepareLink : presentMapURL.imgBlankLink}
+					canvasTool={canvasTool}
+					setTool={setTool}
+					lineWidth={lineWidth}
+					fontSize={fontSize}
+					penColor={penColor}
+					penWidth={penWidth}
+					load={loadJson}
+					panelcollaps={panelcollaps}
+					onAddItem={handleAddCanvasItem}
+					style={{ position: 'absolute', top: '0', left: '0', pointerEvents: 'auto', zIndex: 10 }}
+					canvasTransform={canvasTransform}
+				/>
+				<CanvasOverlay
+					items={canvasItems}
+					onUpdateItem={handleUpdateCanvasItem}
+					onDeleteItem={handleDeleteCanvasItem}
+					style={{ position: 'absolute', top: '0', left: '0', zIndex: 20 }}
+					canvasTransform={canvasTransform}
+				/>
+			</div>
 		</div>
 	);
 
@@ -244,7 +265,6 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 								setPresentMapURL={setPresentMapURL}
 								mapPrepareMode={mapPrepareMode}
 								setMapPrepareMode={setMapPrepareMode}
-								share={liveShare}
 							/>
 						</Header>
 						<Layout>
@@ -288,6 +308,8 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 											setSelectedColor={setSelectedColor}
 											save={saveFile}
 											load={loadFile}
+											magnifierVisible={magnifierVisible}
+											setMagnifierVisible={setMagnifierVisible}
 										/>
 									</Sider>
 								</span>
@@ -297,6 +319,13 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 							<FooterContent />
 						</Footer>
 					</Layout>
+					<Magnifier 
+						visible={magnifierVisible} 
+						onClose={() => setMagnifierVisible(false)} 
+						targetPos={magnifierTargetPos}
+						items={canvasItems}
+						canvasTransform={canvasTransform}
+					/>
 				</ThemeContext.Provider>
 			</LanguageContext.Provider>
 		</LocaleProvider>

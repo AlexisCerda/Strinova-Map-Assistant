@@ -91,6 +91,7 @@ const CanvasItem: React.FC<CanvasItemProps> = ({ item, onUpdate, onDelete, isSel
         <img 
           src={item.value} 
           alt={item.name} 
+          draggable={false}
           style={{ width: item.width ? `${item.width}px` : '35px', pointerEvents: 'none' }} 
         />
       ) : isEditing ? (

@@ -17,6 +17,7 @@ interface PikasoMapProps {
   load: React.Dispatch<React.SetStateAction<void>>
   style?: React.CSSProperties
   onAddItem: (item: any) => void
+  canvasTransform: { x: number, y: number, scale: number }
 }
 
 const DrawMap: React.FC<PikasoMapProps> = ({
@@ -32,7 +33,8 @@ const DrawMap: React.FC<PikasoMapProps> = ({
   panelcollaps,
   load,
   style,
-  onAddItem
+  onAddItem,
+  canvasTransform
 }) => {
   const rescaleTO = useRef<ReturnType<typeof setTimeout> | null>(null)
   const rescaleEditor = useCallback((timeout: number = 0) => {
@@ -40,12 +42,15 @@ const DrawMap: React.FC<PikasoMapProps> = ({
     rescaleTO.current = setTimeout(() => {
       requestAnimationFrame(() => {
         if (!pikasoEditor) return
-        const scaleSize = 1000
-        pikasoEditor?.board.stage.setSize({width: scaleSize, height: scaleSize})
-        pikasoEditor?.board.rescale()
+        const size = 1000 * canvasTransform.scale
+        pikasoEditor.board.stage.setSize({
+          width: size,
+          height: size
+        })
+        pikasoEditor.board.rescale()
       })
     }, timeout)
-  }, [pikasoEditor])
+  }, [pikasoEditor, canvasTransform.scale])
 
   useLayoutEffect(() => {
     switch (canvasTool) {

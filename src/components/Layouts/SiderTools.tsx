@@ -13,6 +13,7 @@ import ToolColorButton from './Buttons/tool-color-button'
 import { Popconfirm, Toast } from '@douyinfe/semi-ui'
 import { RiScreenshot2Fill } from "react-icons/ri";
 import html2canvas from 'html2canvas'
+import { TbZoomIn } from 'react-icons/tb'
 import { LanguageContext } from '../../contexts/LanguageContext.ts'
 
 interface SiderToolsProps {
@@ -33,6 +34,8 @@ interface SiderToolsProps {
   setSelectedColor: React.Dispatch<React.SetStateAction<number>>
   save: React.Dispatch<React.SetStateAction<void>>
   load: React.Dispatch<React.SetStateAction<void>>
+  magnifierVisible: boolean
+  setMagnifierVisible: (visible: boolean) => void
 }
 
 const SiderTools: React.FC<SiderToolsProps> = ({
@@ -53,6 +56,8 @@ const SiderTools: React.FC<SiderToolsProps> = ({
   setSelectedColor,
   save,
   load,
+  magnifierVisible,
+  setMagnifierVisible,
 }) => {
   const [togglevisible, setToggleVisible] = React.useState(false)
   const [selection, setSelection] = React.useState(false)
@@ -183,7 +188,13 @@ const SiderTools: React.FC<SiderToolsProps> = ({
           Icon={selection ? MdDelete : MdDeleteForever}
           typeOverride={selection ? 'secondary' : 'danger'}
           isActiveTool={false}
-          onClick={() => (selection ? editor?.selection.delete() : setToggleVisible(!togglevisible))}
+          onClick={() => {
+            if (selection) {
+              editor?.selection.delete()
+            } else {
+              setToggleVisible(!togglevisible)
+            }
+          }}
         />
       </Popconfirm>
       <span ref={refImageSave}>
@@ -213,6 +224,11 @@ const SiderTools: React.FC<SiderToolsProps> = ({
       <span ref={refLoad}>
         <ToolNormalButton Icon={FaUpload} isActiveTool={false} onClick={() => { load() }} />
       </span>
+      <ToolNormalButton 
+        Icon={TbZoomIn} 
+        isActiveTool={magnifierVisible} 
+        onClick={() => { setMagnifierVisible(!magnifierVisible) }} 
+      />
       <span ref={refSave}>
         <ToolNormalButton Icon={FaDownload} isActiveTool={false} onClick={() => { save() }} />
       </span>

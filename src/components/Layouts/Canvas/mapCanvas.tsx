@@ -7,32 +7,29 @@ interface PikasoMapProps {
   currentMap: string
   style?: React.CSSProperties
   panelcollaps: boolean
+  canvasTransform: { x: number, y: number, scale: number }
 }
 
-const MapCanvas: React.FC<PikasoMapProps> = ({ pikasoRef, pikasoEditor, currentMap, style, panelcollaps }) => {
+const MapCanvas: React.FC<PikasoMapProps> = ({ pikasoRef, pikasoEditor, currentMap, style, panelcollaps, canvasTransform }) => {
   const rescaleTO = useRef<ReturnType<typeof setTimeout> | null>(null)
   const rescaleEditor = useCallback((timeout: number = 0) => {
     if (rescaleTO.current !== null) clearTimeout(rescaleTO.current)
     rescaleTO.current = setTimeout(() => {
       requestAnimationFrame(() => {
         if (!pikasoEditor) return
-        const scaleSize = 1000
-        pikasoEditor?.board.stage.setSize({width: scaleSize, height: scaleSize})
-        pikasoEditor?.board.rescale()
+        const size = 1000 * canvasTransform.scale
+        pikasoEditor.board.stage.setSize({
+          width: size,
+          height: size
+        })
+        pikasoEditor.board.rescale()
     
-        const image = new Image()
-        image.src = currentMap
-        
-        image.onload = () => {
-          const scale = image.height / pikasoEditor!.board.stage.height()
-          pikasoEditor?.board.background.setImageFromUrl(currentMap, {
-            size: 'contain',
-            x: pikasoEditor.board.stage.width() / 2 - image.width / 2 / scale
-          })
-        }
+        pikasoEditor.board.background.setImageFromUrl(currentMap, {
+          size: 'contain'
+        })
       })
     }, timeout)
-  }, [pikasoEditor, currentMap])
+  }, [pikasoEditor, currentMap, canvasTransform.scale])
 
   useLayoutEffect(() => {
     const handleResize = () => rescaleEditor()

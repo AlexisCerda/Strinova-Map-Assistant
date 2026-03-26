@@ -4,8 +4,8 @@ export const getCurrentAppState = ({ presentMap, mapPrepareMode, drawCanvasEdito
     return ({ v: '1.1.0', map: presentMap, mapHighlight: mapPrepareMode, editor: drawCanvasEditor?.export.toJson(), items: canvasItems } as any)
 }
 
-export const loadCurrentAppState = ({ json, setPresentMap, setPresentMapURL, setMapPrepareMode, drawCanvasEditor, setCanvasItems }: any) => {
-    if (json.map in MapName) {
+export const loadCurrentAppState = ({ json, setPresentMap, setPresentMapURL, setMapPrepareMode, drawCanvasEditor, setCanvasItems, currentPresentMap, currentCanvasItems, currentMapPrepareMode }: any) => {
+    if (json.map in MapName && json.map !== currentPresentMap) {
         setPresentMap(json.map)
         for (const mapinfo of mapList) {
             if (mapinfo.map === json.map) {
@@ -14,14 +14,20 @@ export const loadCurrentAppState = ({ json, setPresentMap, setPresentMapURL, set
             }
         }
     }
-    if(json.mapHighlight != null) {
+    if(json.mapHighlight != null && json.mapHighlight !== currentMapPrepareMode) {
         setMapPrepareMode(json.mapHighlight)
     }
     if (json.editor) {
+        // Safe to reset because this instance only handles drawings, not the map
+        drawCanvasEditor?.reset()
         drawCanvasEditor?.import.json(json.editor)
     }
     if (json.items && setCanvasItems) {
-        setCanvasItems(json.items)
+        const currentItemsJson = JSON.stringify(currentCanvasItems)
+        const incomingItemsJson = JSON.stringify(json.items)
+        if (currentItemsJson !== incomingItemsJson) {
+            setCanvasItems(json.items)
+        }
     }
 }
 

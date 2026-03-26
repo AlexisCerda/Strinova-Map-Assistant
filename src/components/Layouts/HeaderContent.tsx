@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { i18nData } from '../../data/i18n'
-import { Button, Nav, Select, Toast } from '@douyinfe/semi-ui'
+import { Button, Nav, Select } from '@douyinfe/semi-ui'
 import Title from '@douyinfe/semi-ui/lib/es/typography/title'
 import { MapName } from '../../data/maplist'
-import { MdOutlineTranslate, MdLightMode, MdDarkMode, MdCastConnected, MdContentCopy } from 'react-icons/md'
+import { MdOutlineTranslate, MdLightMode, MdDarkMode } from 'react-icons/md'
 import ChangeMapButton from '../buttons/changeMapButton'
 import ChangeHighlightButton from '../buttons/changeHighlightButton'
 import Pikaso, { BaseShapes } from 'pikaso'
@@ -21,7 +21,6 @@ interface HeaderContentProps {
   setPresentMapURL: React.Dispatch<React.SetStateAction<{ imgPrepareLink: string; imgBlankLink: string }>>
   setMapPrepareMode: React.Dispatch<React.SetStateAction<boolean>>
   editor: Pikaso<BaseShapes> | null
-  share: React.Dispatch<React.SetStateAction<void>>
 }
 
 const HeaderContent: React.FC<HeaderContentProps> = ({
@@ -32,19 +31,13 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
   setPresentMap,
   setPresentMapURL,
   setMapPrepareMode,
-  editor,
-  share
+  editor
 }) => {
   const currentLanguage = useContext(LanguageContext)
   const currentTheme = useContext(ThemeContext)
 
   const switchTheme = () => {
     changeTheme(currentTheme === "dark" ? "light" : "dark")
-  }
-
-  const copyUrl = () => {
-    navigator.clipboard.writeText(location.href).then(function () {/* on clipboard success */ }, function () {/* on clipboard failed */ })
-    Toast.success('Copied')
   }
 
   return (
@@ -65,12 +58,7 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
         <div style={{ flexDirection: 'column', justifyContent: 'center',marginRight: '10px' }}>
           <ChangeHighlightButton content={currentLanguage.mapsetting.TeamHighlight} mapPrepareMode={mapPrepareMode} setMapPrepareMode={setMapPrepareMode} />
         </div>
-        <div style={{}}>
-          <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <Button icon={<MdCastConnected style={{ fontSize: 32 }} />} size={'large'} onClick={() => { share() }} style={{margin:"2px"}}/>
-            <Button icon={<MdContentCopy style={{ fontSize: 32 }} />} size={'large'} onClick={() => { copyUrl() }} style={{margin:"2px"}} />
-          </div>
-        </div>
+        <div style={{ flex: 1 }} />
         <Nav.Footer>
           <Announcement name={currentLanguage.announcement} content={currentLanguage.announcementdata} />
           <Button
