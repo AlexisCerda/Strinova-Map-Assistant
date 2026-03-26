@@ -54,13 +54,21 @@ export default {
         name: "日本語wiki",
         icon: <img style={{ height: "28px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-1))", marginRight: "8px" }} src='/images/remote/e4a1f9f8_atwiki_logo_small.svg' />,
         url: "https://w.atwiki.jp/calabiyau_jp/",
-      },],
+      },{
+				name: "Wiki FR",
+				icon: <></>,
+				url: "https://strinova.org/wiki/Main_Page/fr",
+			}],
     others:
       [{
         name: "自建房助手",
         icon: <img style={{ height: "35px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-1))", marginRight: "8px" }} src='/images/remote/696fe7d4_pmYnw16rL2PQWBy.png' />,
         url: "https://klbq.fsltech.cn/",
-      }],
+      },{
+				name: "Linkrachi974",
+				icon: <img style={{ height: "35px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-1))", marginRight: "8px" }} src='/images/remote/profileLinkrachi.png' />,
+				url: "https://www.youtube.com/@linkrachi974",
+			}],
     contact: {
       content: <div style={{ width: "100%", textAlign: "center" }}>
         Pour s'ajouter en tant qu'ami, contactez <a href='mailto:fsltech@email.cn'>fsltech@email.cn</a>
