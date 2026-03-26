@@ -26,17 +26,17 @@ export default {
     official:
       [{
         name: "",
-        icon: <img style={{ height: "35px", filter: "brightness(1000%) drop-shadow(0 0 2px rgba(var(--semi-grey-7))" }} src='/images/remote/80381b7b_sec_ordlogo.png' />,
+        icon: <img style={{ height: "35px", filter: "brightness(1000%) drop-shadow(0 0 2px rgba(var(--semi-grey-7))" }} src={import.meta.env.BASE_URL + 'images/remote/80381b7b_sec_ordlogo.png'} />,
         url: "https://klbq.qq.com/",
       }, {
         name: "",
-        icon: <img style={{ height: "22px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-9))" }} src='/images/remote/72d02e43_logo-white.png' />,
+        icon: <img style={{ height: "22px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-9))" }} src={import.meta.env.BASE_URL + 'images/remote/72d02e43_logo-white.png'} />,
         url: "https://www.strinova.com/",
       }],
     wiki:
       [{
         name: "",
-        icon: <img style={{ height: "32px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-9))" }} src='/images/remote/cfb7e6cb_NQTMvDZ5ah4omYR.png' />,
+        icon: <img style={{ height: "32px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-9))" }} src={import.meta.env.BASE_URL + 'images/remote/cfb7e6cb_NQTMvDZ5ah4omYR.png'} />,
         url: "https://wiki.biligame.com/klbq/",
       }, {
         name: "Strinovajp Wiki",
@@ -44,7 +44,7 @@ export default {
         url: "https://www.strinovajp-wiki.jp/index.html",
       }, {
         name: "",
-        icon: <img style={{ height: "22px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-1))" }} src='/images/remote/b1b81f36_R4UxmBPGd2f8kQ7.webp' />,
+        icon: <img style={{ height: "22px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-1))" }} src={import.meta.env.BASE_URL + 'images/remote/b1b81f36_R4UxmBPGd2f8kQ7.webp'} />,
         url: "https://strinova.wiki.gg/wiki/Strinova_Wiki",
       }, {
         name: "Miraheze Meta",
@@ -52,7 +52,7 @@ export default {
         url: "https://strinova.org/wiki/",
       }, {
         name: "日本語wiki",
-        icon: <img style={{ height: "28px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-1))", marginRight: "8px" }} src='/images/remote/e4a1f9f8_atwiki_logo_small.svg' />,
+        icon: <img style={{ height: "28px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-1))", marginRight: "8px" }} src={import.meta.env.BASE_URL + 'images/remote/e4a1f9f8_atwiki_logo_small.svg'} />,
         url: "https://w.atwiki.jp/calabiyau_jp/",
       },{
 				name: "Wiki FR",
@@ -62,11 +62,11 @@ export default {
     others:
       [{
         name: "自建房助手",
-        icon: <img style={{ height: "35px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-1))", marginRight: "8px" }} src='/images/remote/696fe7d4_pmYnw16rL2PQWBy.png' />,
+        icon: <img style={{ height: "35px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-1))", marginRight: "8px" }} src={import.meta.env.BASE_URL + 'images/remote/696fe7d4_pmYnw16rL2PQWBy.png'} />,
         url: "https://klbq.fsltech.cn/",
       },{
 				name: "Linkrachi974",
-				icon: <img style={{ height: "35px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-1))", marginRight: "8px" }} src='/images/remote/profileLinkrachi.png' />,
+				icon: <img style={{ height: "35px", filter: "drop-shadow(0 0 2px rgba(var(--semi-grey-1))", marginRight: "8px" }} src={import.meta.env.BASE_URL + 'images/remote/profileLinkrachi.png'} />,
 				url: "https://www.youtube.com/@linkrachi974",
 			}],
     contact: {

@@ -5,23 +5,23 @@ const character: characterData = {
 		faction: factions.PUS,
 		id: PUS.Nobunaga,
 		defense: {
-			canvasImage: '/images/remote/7d4208d9_7UuX5VTR8AYWD2o.png',
-			bodyImage: '/images/remote/2e63f1ea_nvuOWPyjXK3Fif9.png',
+			canvasImage: import.meta.env.BASE_URL + 'images/remote/7d4208d9_7UuX5VTR8AYWD2o.png',
+			bodyImage: import.meta.env.BASE_URL + 'images/remote/2e63f1ea_nvuOWPyjXK3Fif9.png',
 			skills: {
 				active: {
-					skillIcon: '/images/remote/e8762604_VJFzGhSyXmsiHpO.png',
+					skillIcon: import.meta.env.BASE_URL + 'images/remote/e8762604_VJFzGhSyXmsiHpO.png',
 					generateOnCanvas: active
 				},
 				passive: {
-					skillIcon: '/images/remote/0acc8676_AHsc9o8W25UlpNa.png',
+					skillIcon: import.meta.env.BASE_URL + 'images/remote/0acc8676_AHsc9o8W25UlpNa.png',
 					generateOnCanvas: passive
 				},
 				tactical: {
-					skillIcon: '/images/remote/62a963ca_MTjuAvcKSq6RNiU.png',
+					skillIcon: import.meta.env.BASE_URL + 'images/remote/62a963ca_MTjuAvcKSq6RNiU.png',
 					generateOnCanvas: tactical
 				},
 				ultimate: {
-					skillIcon: '/images/remote/ae864240_Vr78sb9T32ADMuy.png',
+					skillIcon: import.meta.env.BASE_URL + 'images/remote/ae864240_Vr78sb9T32ADMuy.png',
 					generateOnCanvas: ultimate
 				}
 			}

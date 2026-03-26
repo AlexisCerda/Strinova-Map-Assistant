@@ -5,23 +5,23 @@ const character: characterData = {
 	faction: factions.PUS,
 	id: PUS.Kokona,
 	defense: {
-		canvasImage: '/images/remote/57e842c4_jtlryiY8WHIGAMq.png',
-		bodyImage: '/images/remote/dde3a8d4_nEpdV1chgeNuiry.png',
+		canvasImage: import.meta.env.BASE_URL + 'images/remote/57e842c4_jtlryiY8WHIGAMq.png',
+		bodyImage: import.meta.env.BASE_URL + 'images/remote/dde3a8d4_nEpdV1chgeNuiry.png',
 		skills: {
 			active: {
-				skillIcon: '/images/remote/d917929f_9zFsMYumpwJZrTg.png',
+				skillIcon: import.meta.env.BASE_URL + 'images/remote/d917929f_9zFsMYumpwJZrTg.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: '/images/remote/140afe74_V8NijM5onGulX9m.png',
+				skillIcon: import.meta.env.BASE_URL + 'images/remote/140afe74_V8NijM5onGulX9m.png',
 				generateOnCanvas: passive
 			},
 			tactical: {
-				skillIcon: '/images/remote/6bd891e4_7lenAEosyt96kbZ.png',
+				skillIcon: import.meta.env.BASE_URL + 'images/remote/6bd891e4_7lenAEosyt96kbZ.png',
 				generateOnCanvas: tactical
 			},
 			ultimate: {
-				skillIcon: '/images/remote/0d9fa0f8_tilQp18zRheBMaJ.png',
+				skillIcon: import.meta.env.BASE_URL + 'images/remote/0d9fa0f8_tilQp18zRheBMaJ.png',
 				generateOnCanvas: ultimate
 			}
 		}

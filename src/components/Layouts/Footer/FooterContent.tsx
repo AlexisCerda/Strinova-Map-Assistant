@@ -17,7 +17,7 @@ const FooterContent: React.FC = () => {
           <img
             decoding='async'
             loading='lazy'
-            src='/images/remote/1f0afb4b_TPdoKCrgVb4i37J.png'
+            src={import.meta.env.BASE_URL + 'images/remote/1f0afb4b_TPdoKCrgVb4i37J.png'}
             width='107'
             height='38'
             style={{ marginRight: '20px', marginTop: '5px' }}

@@ -6,45 +6,45 @@ const character: characterData = {
 	faction: factions.Urbino,
 	id: Urbino.Audrey,
 	attack: {
-		canvasImage: '/images/remote/59e66937_qD7YufUpTmbzX1x.png',
-		bodyImage: '/images/remote/8254a356_GAv1ONZDR4sphmM.png',
+		canvasImage: import.meta.env.BASE_URL + 'images/remote/59e66937_qD7YufUpTmbzX1x.png',
+		bodyImage: import.meta.env.BASE_URL + 'images/remote/8254a356_GAv1ONZDR4sphmM.png',
 		skills: {
 			active: {
-				skillIcon: '/images/remote/82a0b83e_9PqOBd7owjJrRVp.png',
+				skillIcon: import.meta.env.BASE_URL + 'images/remote/82a0b83e_9PqOBd7owjJrRVp.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: '/images/remote/d58129a7_pfyJk2RLYsXlBFg.png',
+				skillIcon: import.meta.env.BASE_URL + 'images/remote/d58129a7_pfyJk2RLYsXlBFg.png',
 				generateOnCanvas: passive
 			},
 			tactical: {
-				skillIcon: '/images/remote/434029c7_iUDp2MuxwXVcd7a.png',
+				skillIcon: import.meta.env.BASE_URL + 'images/remote/434029c7_iUDp2MuxwXVcd7a.png',
 				generateOnCanvas: tactical
 			},
 			ultimate: {
-				skillIcon: '/images/remote/c758ab58_E6tTWi1Suls5Y9R.png',
+				skillIcon: import.meta.env.BASE_URL + 'images/remote/c758ab58_E6tTWi1Suls5Y9R.png',
 				generateOnCanvas: ultimate
 			}
 		}
 	},
 	defense: {
-		canvasImage: '/images/remote/22f8a2ec_IVhuSTZvYmk4CNj.png',
-		bodyImage: '/images/remote/8254a356_GAv1ONZDR4sphmM.png',
+		canvasImage: import.meta.env.BASE_URL + 'images/remote/22f8a2ec_IVhuSTZvYmk4CNj.png',
+		bodyImage: import.meta.env.BASE_URL + 'images/remote/8254a356_GAv1ONZDR4sphmM.png',
 		skills: {
 			active: {
-				skillIcon: '/images/remote/82a0b83e_9PqOBd7owjJrRVp.png',
+				skillIcon: import.meta.env.BASE_URL + 'images/remote/82a0b83e_9PqOBd7owjJrRVp.png',
 				generateOnCanvas: active
 			},
 			passive: {
-				skillIcon: '/images/remote/d58129a7_pfyJk2RLYsXlBFg.png',
+				skillIcon: import.meta.env.BASE_URL + 'images/remote/d58129a7_pfyJk2RLYsXlBFg.png',
 				generateOnCanvas: passive
 			},
 			tactical: {
-				skillIcon: '/images/remote/434029c7_iUDp2MuxwXVcd7a.png',
+				skillIcon: import.meta.env.BASE_URL + 'images/remote/434029c7_iUDp2MuxwXVcd7a.png',
 				generateOnCanvas: tactical
 			},
 			ultimate: {
-				skillIcon: '/images/remote/c758ab58_E6tTWi1Suls5Y9R.png',
+				skillIcon: import.meta.env.BASE_URL + 'images/remote/c758ab58_E6tTWi1Suls5Y9R.png',
 				generateOnCanvas: ultimate
 			}
 		}

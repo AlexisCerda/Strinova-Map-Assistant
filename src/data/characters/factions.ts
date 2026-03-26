@@ -46,14 +46,14 @@ type factionData = {
 export const factionsData: factionData = {
 	PUS: {
 		faction: factions.PUS,
-		previewImage: "/images/remote/4ef46da3_1El6anYx4qhPbo2.png"
+		previewImage: import.meta.env.BASE_URL + "images/remote/4ef46da3_1El6anYx4qhPbo2.png"
 	},
 	TheScissors: {
 		faction: factions.TheScissors,
-		previewImage: "/images/remote/ab662df9_PY4HMU7fbQ32Dr1.png"
+		previewImage: import.meta.env.BASE_URL + "images/remote/ab662df9_PY4HMU7fbQ32Dr1.png"
 	},
 	Urbino: {
 		faction: factions.Urbino,
-		previewImage: "/images/remote/b366d340_hyPUcLZdMNaeOjI.png"
+		previewImage: import.meta.env.BASE_URL + "images/remote/b366d340_hyPUcLZdMNaeOjI.png"
 	}
 }

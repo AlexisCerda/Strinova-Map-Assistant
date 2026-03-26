@@ -19,36 +19,36 @@ interface MapList {
 export const mapList: MapList[] = [
   {
     map: MapName.WindyTown,
-    imgPrepareLink: "/images/remote/5f1848f2_Shk6rXTwvAlDGMC.png",
-    imgBlankLink: "/images/remote/2b94e98c_85uxWct3DeRByTO.png"
+    imgPrepareLink: import.meta.env.BASE_URL + "images/remote/5f1848f2_Shk6rXTwvAlDGMC.png",
+    imgBlankLink: import.meta.env.BASE_URL + "images/remote/2b94e98c_85uxWct3DeRByTO.png"
   }, {
     map: MapName.SpaceLab,
-    imgPrepareLink: "/images/remote/f346f819_QI6hnMtsJpSCKgE.png",
-    imgBlankLink: "/images/remote/ca2efd37_KxUYEBqdlyZ92rC.png"
+    imgPrepareLink: import.meta.env.BASE_URL + "images/remote/f346f819_QI6hnMtsJpSCKgE.png",
+    imgBlankLink: import.meta.env.BASE_URL + "images/remote/ca2efd37_KxUYEBqdlyZ92rC.png"
   }, {
     map: MapName.Khesmet,
-    imgPrepareLink: "/images/remote/736fc2bb_QnNZHhT4wDbFxIO.png",
-    imgBlankLink: "/images/remote/2a54ee5d_jroCB9iqR1l5LDp.png"
+    imgPrepareLink: import.meta.env.BASE_URL + "images/remote/736fc2bb_QnNZHhT4wDbFxIO.png",
+    imgBlankLink: import.meta.env.BASE_URL + "images/remote/2a54ee5d_jroCB9iqR1l5LDp.png"
   }, {
     map: MapName.EulerPort,
-    imgPrepareLink: "/images/remote/0b26c763_Md2Pa1HKtJyk7oO.png",
-    imgBlankLink: "/images/remote/7be470fc_NGWk2HXwSvmdgOY.png"
+    imgPrepareLink: import.meta.env.BASE_URL + "images/remote/0b26c763_Md2Pa1HKtJyk7oO.png",
+    imgBlankLink: import.meta.env.BASE_URL + "images/remote/7be470fc_NGWk2HXwSvmdgOY.png"
   }, {
     map: MapName.CauchyDistrict,
-    imgPrepareLink: "/images/remote/de201f9a_Uw3ftVPQOLu5MCj.png",
-    imgBlankLink: "/images/remote/82e0a783_cLDQtdwAJyr2k7T.png"
+    imgPrepareLink: import.meta.env.BASE_URL + "images/remote/de201f9a_Uw3ftVPQOLu5MCj.png",
+    imgBlankLink: import.meta.env.BASE_URL + "images/remote/82e0a783_cLDQtdwAJyr2k7T.png"
   }, {
     map: MapName.Area88,
-    imgPrepareLink: "/images/remote/ca1abe94_wouqxsUy1JaP8l6.png",
-    imgBlankLink: "/images/remote/11864963_YBUsSC78oOrx16W.png"
+    imgPrepareLink: import.meta.env.BASE_URL + "images/remote/ca1abe94_wouqxsUy1JaP8l6.png",
+    imgBlankLink: import.meta.env.BASE_URL + "images/remote/11864963_YBUsSC78oOrx16W.png"
   }, {
     map: MapName.Base404,
-    imgPrepareLink: "/images/remote/b7b985fc_XfMi4qcV5zmTy78.png",
-    imgBlankLink: "/images/remote/a26771f2_pjGMHJClRsXEoAf.png"
+    imgPrepareLink: import.meta.env.BASE_URL + "images/remote/b7b985fc_XfMi4qcV5zmTy78.png",
+    imgBlankLink: import.meta.env.BASE_URL + "images/remote/a26771f2_pjGMHJClRsXEoAf.png"
   }, {
     map: MapName.Ocarnus,
-    imgPrepareLink: "/images/remote/60ad943a_HAisD5nj9Plz4dV.png",
-    imgBlankLink: "/images/remote/50252dc5_pzYjVHbdiL3qn7c.webp"
+    imgPrepareLink: import.meta.env.BASE_URL + "images/remote/60ad943a_HAisD5nj9Plz4dV.png",
+    imgBlankLink: import.meta.env.BASE_URL + "images/remote/50252dc5_pzYjVHbdiL3qn7c.webp"
   }
 ];
 
