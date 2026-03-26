@@ -85,6 +85,7 @@ const Magnifier: React.FC<MagnifierProps> = ({ visible, onClose, items, targetPo
   }, [visible, zoom, targetPos, size, canvasTransform.scale])
 
   const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault()
     setIsDragging(true)
     dragOffset.current = {
       x: e.clientX - pos.x,
@@ -93,6 +94,7 @@ const Magnifier: React.FC<MagnifierProps> = ({ visible, onClose, items, targetPo
   }
 
   const handleResizeMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault()
     e.stopPropagation()
     setIsResizing(true)
     resizeStartSize.current = size
@@ -150,12 +152,14 @@ const Magnifier: React.FC<MagnifierProps> = ({ visible, onClose, items, targetPo
         width: size,
         height: size,
         zIndex: 1000,
-        border: '4px solid var(--semi-color-primary)',
-        borderRadius: '8px',
         boxShadow: '0 8px 32px rgba(0,0,0,0.8)',
         backgroundColor: '#1a1a1a',
         overflow: 'hidden',
-        pointerEvents: 'none'
+        pointerEvents: 'none',
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
+        borderRadius: '8px',
+        border: '1px solid rgba(255,255,255,0.2)'
       }}
     >
       {/* Mirror Canvas (Map + Drawings) */}
@@ -213,26 +217,27 @@ const Magnifier: React.FC<MagnifierProps> = ({ visible, onClose, items, targetPo
       {/* Control Overlay */}
       <div style={{
         position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '30px',
+        width: 'calc(100% - 20px)',
+        height: '32px',
+        left: '10px',
+        top: '10px',
         background: 'rgba(0,0,0,0.85)',
         display: 'flex',
         alignItems: 'center',
         padding: '0 10px',
+        borderRadius: '6px',
         justifyContent: 'space-between',
         pointerEvents: 'auto',
         cursor: 'move',
-        borderBottom: '1px solid rgba(255,255,255,0.1)'
+        border: '1px solid rgba(255,255,255,0.1)'
       }}
       onMouseDown={handleMouseDown}
       >
-        <span style={{ color: 'white', fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.5px' }}>LOUPE x{zoom.toFixed(1)}</span>
+        <span style={{ color: 'white', fontSize: '11px', fontWeight: 'bold', letterSpacing: '0.5px', userSelect: 'none' }}>LOUPE x{zoom.toFixed(1)}</span>
         <div style={{ display: 'flex', gap: '8px' }}>
-          <button onClick={() => setZoom(prev => Math.max(1, prev - 0.5))} style={{ width: '22px', height: '22px', padding: 0, borderRadius: '4px', border: '1px solid #444', background: '#333', color: 'white', cursor: 'pointer' }}>-</button>
-          <button onClick={() => setZoom(prev => Math.min(8, prev + 0.5))} style={{ width: '22px', height: '22px', padding: 0, borderRadius: '4px', border: '1px solid #444', background: '#333', color: 'white', cursor: 'pointer' }}>+</button>
-          <button onClick={onClose} style={{ width: '22px', height: '22px', padding: 0, borderRadius: '4px', background: '#ff4d4f', border: 'none', color: 'white', cursor: 'pointer', fontWeight: 'bold' }}>×</button>
+          <button onClick={() => setZoom(prev => Math.max(1, prev - 0.5))} style={{ width: '24px', height: '24px', padding: 0, borderRadius: '4px', border: '1px solid #444', background: '#333', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>-</button>
+          <button onClick={() => setZoom(prev => Math.min(8, prev + 0.5))} style={{ width: '24px', height: '24px', padding: 0, borderRadius: '4px', border: '1px solid #444', background: '#333', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>+</button>
+          <button onClick={onClose} style={{ width: '24px', height: '24px', padding: 0, borderRadius: '4px', background: '#ff4d4f', border: 'none', color: 'white', cursor: 'pointer', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '16px' }}>×</button>
         </div>
       </div>
       
