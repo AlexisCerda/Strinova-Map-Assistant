@@ -12,8 +12,6 @@ export enum ConnectionState {
 }
 
 let lastAppState: any = null
-let drawInteraction = true
-let drawInteractionTO: any = null
 export class Lobby {
   connectionState: ConnectionState = ConnectionState.DISCONNECTED
   peer: any
@@ -27,9 +25,7 @@ export class Lobby {
     this.args = args
   }
   listen() {
-    Toast.info('Processing')
     const s = this
-    const { presentMap, setPresentMap, setPresentMapURL, mapPrepareMode, setMapPrepareMode, drawCanvasEditor } = s.args
     if (s.peer) return
     s.peer = new Peer()
     s.connectionState = ConnectionState.CONNECTING
@@ -74,7 +70,12 @@ export class Lobby {
           const joinPeerIdIndex = s.peerIds.indexOf('')
           if (joinPeerIdIndex !== -1) {
             s.peerIds[joinPeerIdIndex] = connection.peer
-            const currentAppState = getCurrentAppState({ presentMap, mapPrepareMode, drawCanvasEditor })
+            const currentAppState = getCurrentAppState({ 
+              presentMap: s.args.presentMap, 
+              mapPrepareMode: s.args.mapPrepareMode, 
+              drawCanvasEditor: s.args.drawCanvasEditor, 
+              canvasItems: s.args.canvasItems 
+            })
             const sendJoinResponse = { type: "joinResponse", peerIds: s.peerIds, state: currentAppState }
             connection.send(sendJoinResponse)
             for (let i = 0; i < s.peerIds.length; i++) {
@@ -85,22 +86,20 @@ export class Lobby {
               }
             }
           }
-          const peerIdConnection = s.connections.find(c => s.peerIds.indexOf(c.peer) !== -1)
-          if (!peerIdConnection) {
-            connection.close()
-            let i = s.connections.length
-            while (i--) {
-              if (s.connections[i].peer === connection.peer) {
-                s.connections.splice(i, 1)
-              }
-            }
-          }
         } else if (data.type === 'state') {
-          lastAppState = data.state
-          drawInteraction = false
-          clearTimeout(drawInteractionTO)
-          drawInteractionTO =setTimeout(() => { drawInteraction = true }, 2000)
-          loadCurrentAppState({ json: data.state, setPresentMap, setPresentMapURL, setMapPrepareMode, drawCanvasEditor })
+          loadCurrentAppState({ 
+            json: data.state, 
+            setPresentMap: s.args.setPresentMap, 
+            setPresentMapURL: s.args.setPresentMapURL, 
+            setMapPrepareMode: s.args.setMapPrepareMode, 
+            drawCanvasEditor: s.args.drawCanvasEditor, 
+            setCanvasItems: s.args.setCanvasItems 
+          })
+          // Normalize lastAppState with the local editor export to prevent loops
+          lastAppState = {
+            ...data.state,
+            editor: s.args.drawCanvasEditor?.export.toJson()
+          }
         }
       })
     })
@@ -123,8 +122,7 @@ export class Lobby {
   }
   connect({ id }: { id: string }) {
     const s = this
-    const { setPresentMap, setPresentMapURL, setMapPrepareMode, drawCanvasEditor } = s.args
-    const connection = s.peer.connect(id, { reliable: true, ebug: 3 })
+    const connection = s.peer.connect(id, { reliable: true })
     connection.on("open", () => {
       s.connections.push(connection)
       let disconnectConnectionTO = setTimeout(() => { s.disconnectConnection(connection)}, 10000)
@@ -143,29 +141,43 @@ export class Lobby {
               }
             }
           }
-          lastAppState = data.state
-          drawInteraction = false
-          clearTimeout(drawInteractionTO)
-          drawInteractionTO =setTimeout(() => { drawInteraction = true }, 2000)
-          loadCurrentAppState({ json: data.state, setPresentMap, setPresentMapURL, setMapPrepareMode, drawCanvasEditor })
+          loadCurrentAppState({ 
+            json: data.state, 
+            setPresentMap: s.args.setPresentMap, 
+            setPresentMapURL: s.args.setPresentMapURL, 
+            setMapPrepareMode: s.args.setMapPrepareMode, 
+            drawCanvasEditor: s.args.drawCanvasEditor, 
+            setCanvasItems: s.args.setCanvasItems 
+          })
+          // Normalize lastAppState with the local editor export to prevent loops
+          lastAppState = {
+            ...data.state,
+            editor: s.args.drawCanvasEditor?.export.toJson()
+          }
         } else if (data.type === 'state') {
-          lastAppState = data.state
-          drawInteraction = false
-          clearTimeout(drawInteractionTO)
-          drawInteractionTO =setTimeout(() => { drawInteraction = true }, 2000)
-          loadCurrentAppState({ json: data.state, setPresentMap, setPresentMapURL, setMapPrepareMode, drawCanvasEditor })
+          loadCurrentAppState({ 
+            json: data.state, 
+            setPresentMap: s.args.setPresentMap, 
+            setPresentMapURL: s.args.setPresentMapURL, 
+            setMapPrepareMode: s.args.setMapPrepareMode, 
+            drawCanvasEditor: s.args.drawCanvasEditor, 
+            setCanvasItems: s.args.setCanvasItems 
+          })
+          // Normalize lastAppState with the local editor export to prevent loops
+          lastAppState = {
+            ...data.state,
+            editor: s.args.drawCanvasEditor?.export.toJson()
+          }
         }
       })
     })
     connection.on("close", () => {
-      console.log('connect close', connection.peer)
+      // silenced
     })
     connection.on("error", (err: any) => {
-      console.log('connect error', connection.peer, err)
       Toast.error('Connect error!')
     })
     connection.on("disconnected", (err: any) => {
-      console.log('connect disconnected', connection.peer, err)
       Toast.error('Connect disconnected!')
     })
   }
@@ -202,6 +214,7 @@ export class Lobby {
     this.connections = []
     this.peerIds = ['', '', '', '', '', '', '', '', '', '']
     this.id = this.peer = this.conn = undefined
+    lastAppState = null
     Toast.success('Sharing closed')
   }
 }
@@ -219,15 +232,16 @@ export const cleanUpShare = () => {
 }
 
 let drawTO: any = null
+export const delayUpdateLiveMap = () => {
+  clearTimeout(drawTO)
+  drawTO = setTimeout(updateLiveMap, 500)
+}
+
 export const rebindShare = () => {
   if (lobby && lobby.connectionState === ConnectionState.CONNECTED) {
     const { drawCanvasEditor } = lobby.args
-    const delayUpdateLiveMap = () => {
-      clearTimeout(drawTO)
-      drawTO = setTimeout(updateLiveMap, 1000)
-    }
-    // const drawEvents = ['*']
-    const drawEvents = ['shape:create', 'shape:delete', 'selection:dragend', 'board:change-active-drawing', 'history:undo', 'history:redo', 'selection:transformend']
+    if (!drawCanvasEditor) return
+    const drawEvents = '*'
     drawCanvasEditor.off(drawEvents, delayUpdateLiveMap)
     drawCanvasEditor.on(drawEvents, delayUpdateLiveMap)
   }
@@ -235,12 +249,20 @@ export const rebindShare = () => {
 
 export const updateLiveMap = () => {
   if (lobby && lobby.connectionState === ConnectionState.CONNECTED) {
-    const { presentMap, mapPrepareMode, drawCanvasEditor } = lobby.args
-    const currentAppState = getCurrentAppState({ presentMap, mapPrepareMode, drawCanvasEditor })
-    if (drawInteraction && JSON.stringify(lastAppState) != JSON.stringify(currentAppState)) {
+    const { presentMap, mapPrepareMode, drawCanvasEditor, canvasItems } = lobby.args
+    const currentAppState = getCurrentAppState({ presentMap, mapPrepareMode, drawCanvasEditor, canvasItems })
+    
+    // Defensive comparison to avoid infinite loops: focus on items and map
+    const isDifferent = !lastAppState || 
+      JSON.stringify(lastAppState.items) !== JSON.stringify(currentAppState.items) ||
+      lastAppState.map !== currentAppState.map ||
+      lastAppState.mapHighlight !== currentAppState.mapHighlight ||
+      JSON.stringify(lastAppState.editor) !== JSON.stringify(currentAppState.editor)
+
+    if (isDifferent) {
       for (let i = 0; i < lobby.connections.length; i++) {
         const c = lobby.connections[i]
-        if (lobby.id != c.peer && c.open) {
+        if (c && lobby.id != c.peer && c.open) {
           c.send({ type: 'state', state: currentAppState })
         }
       }
@@ -266,10 +288,13 @@ export const share = ({ ui }: any = {}) => {
   }, 1000)
 }
 
-export const updateLobbyRefs = ({ presentMap, mapPrepareMode }: any) => {
+export const updateLobbyRefs = ({ presentMap, mapPrepareMode, canvasItems, setCanvasItems, drawCanvasEditor }: any) => {
   if(lobby) {
     lobby.args.presentMap = presentMap
     lobby.args.mapPrepareMode = mapPrepareMode
+    if (canvasItems !== undefined) lobby.args.canvasItems = canvasItems
+    if (setCanvasItems !== undefined) lobby.args.setCanvasItems = setCanvasItems
+    if (drawCanvasEditor !== undefined) lobby.args.drawCanvasEditor = drawCanvasEditor
   }
   return lobby
 }

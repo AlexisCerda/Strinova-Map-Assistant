@@ -5,7 +5,7 @@ import { Layout, LocaleProvider } from '@douyinfe/semi-ui';
 import { characterRegistry } from '../data/characters/characterRegistry';
 import { MapName, mapList } from '../data/maplist';
 import { save, load, loadCurrentAppState } from '../data/stateManagement';
-import { initShare, share, rebindShare, cleanUpShare, updateLobbyRefs, updateLiveMap } from '../data/liveShare.ts';
+import { initShare, share, rebindShare, cleanUpShare, updateLobbyRefs, delayUpdateLiveMap } from '../data/liveShare.ts';
 import { mapTools, loadColors } from '../utils/canvasConstants';
 import DrawMap from './Layouts/Canvas/drawCanvas';
 import MapCanvas from './Layouts/Canvas/mapCanvas';
@@ -154,7 +154,7 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 	useLayoutEffect(() => {
 		const onHashChange = () => { share()}
 		if(drawCanvasEditor) {
-			initShare({ presentMap, setPresentMap, setPresentMapURL, mapPrepareMode, setMapPrepareMode, drawCanvasEditor })
+			initShare({ presentMap, setPresentMap, setPresentMapURL, mapPrepareMode, setMapPrepareMode, drawCanvasEditor, canvasItems, setCanvasItems })
 			if (location.hash) {
 				share()
 			}
@@ -166,11 +166,16 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 		}
 	}, [drawCanvasEditor])
 
+	// Stable effect for rebinding listeners
 	useLayoutEffect(() => {
-		updateLobbyRefs({presentMap, mapPrepareMode})
 		rebindShare()
-		updateLiveMap()
-	}, [presentMap, setPresentMap, presentMapURL, setPresentMapURL, mapPrepareMode, setMapPrepareMode])
+	}, [drawCanvasEditor])
+
+	// Reactive effect for state updates
+	useLayoutEffect(() => {
+		updateLobbyRefs({presentMap, mapPrepareMode, canvasItems, setCanvasItems, drawCanvasEditor})
+		delayUpdateLiveMap()
+	}, [presentMap, setPresentMap, presentMapURL, setPresentMapURL, mapPrepareMode, setMapPrepareMode, canvasItems, setCanvasItems, drawCanvasEditor])
 
 	const canvases = (
 		<div id="capture" style={{ overflow: 'hidden', position: 'relative', top: 0, left: 0, width: '100%', height: '100%' }}>
