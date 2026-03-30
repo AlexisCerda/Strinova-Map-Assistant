@@ -10,19 +10,19 @@ const character: characterData = {
     bodyImage: import.meta.env.BASE_URL + 'images/remote/4a9f2b64_xYLHks7NzduUmWP.png',
     skills: {
       active: {
-        skillIcon: import.meta.env.BASE_URL + 'images/remote/7083ac7c_WmtSU2hFLBPaf85.png',
+        skillIcon: import.meta.env.BASE_URL + 'images/remote/activeskill_cielle.png',
         generateOnCanvas: active
       },
       passive: {
-        skillIcon: import.meta.env.BASE_URL + 'images/remote/a26eb4e2_O5dXCxh3R1wVINQ.png',
+        skillIcon: import.meta.env.BASE_URL + 'images/remote/passiveskill_cielle.png',
         generateOnCanvas: passive
       },
       tactical: {
-        skillIcon: import.meta.env.BASE_URL + 'images/remote/9c6b29e6_xm5Io68zcXSZAn1.png',
+        skillIcon: import.meta.env.BASE_URL + 'images/remote/tacticalskill_cielle.png',
         generateOnCanvas: tactical
       },
       ultimate: {
-        skillIcon: import.meta.env.BASE_URL + 'images/remote/f08e0d0b_bJalMyBfZ7iXVtx.png',
+        skillIcon: import.meta.env.BASE_URL + 'images/remote/ultimate_cielle.png',
         generateOnCanvas: ultimate
       }
     }
@@ -32,19 +32,19 @@ const character: characterData = {
     bodyImage: import.meta.env.BASE_URL + 'images/remote/4a9f2b64_xYLHks7NzduUmWP.png',
     skills: {
       active: {
-        skillIcon: import.meta.env.BASE_URL + 'images/remote/7083ac7c_WmtSU2hFLBPaf85.png',
+        skillIcon: import.meta.env.BASE_URL + 'images/remote/activeskill_cielle.png',
         generateOnCanvas: active
       },
       passive: {
-        skillIcon: import.meta.env.BASE_URL + 'images/remote/a26eb4e2_O5dXCxh3R1wVINQ.png',
+        skillIcon: import.meta.env.BASE_URL + 'images/remote/passiveskill_cielle.png',
         generateOnCanvas: passive
       },
       tactical: {
-        skillIcon: import.meta.env.BASE_URL + 'images/remote/9c6b29e6_xm5Io68zcXSZAn1.png',
+        skillIcon: import.meta.env.BASE_URL + 'images/remote/tacticalskill_cielle.png',
         generateOnCanvas: tactical
       },
       ultimate: {
-        skillIcon: import.meta.env.BASE_URL + 'images/remote/f08e0d0b_bJalMyBfZ7iXVtx.png',
+        skillIcon: import.meta.env.BASE_URL + 'images/remote/ultimate_cielle.png',
         generateOnCanvas: ultimate
       }
     }

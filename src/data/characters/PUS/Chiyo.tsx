@@ -10,19 +10,19 @@ const character: characterData = {
     bodyImage: import.meta.env.BASE_URL + 'images/remote/4e5a6c41_ZcVRCBUJ8PGwn46.png',
     skills: {
       active: {
-        skillIcon: import.meta.env.BASE_URL + 'images/remote/a9b5293e_58dg6OpPntlviqW.png',
+        skillIcon: import.meta.env.BASE_URL + 'images/remote/activeskill_chiyo.png',
         generateOnCanvas: active
       },
       passive: {
-        skillIcon: import.meta.env.BASE_URL + 'images/remote/eb8bf55a_u5tV9xaNyjUL6EM.png',
+        skillIcon: import.meta.env.BASE_URL + 'images/remote/passiveskill_chiyo.png',
         generateOnCanvas: passive
       },
       tactical: {
-        skillIcon: import.meta.env.BASE_URL + 'images/remote/da2d140a_lYbBufA6raXvQ1n.png',
+        skillIcon: import.meta.env.BASE_URL + 'images/remote/tacticalskill_chiyo.png',
         generateOnCanvas: tactical
       },
       ultimate: {
-        skillIcon: import.meta.env.BASE_URL + 'images/remote/daea7250_ezsVQS62bY5iBcG.png',
+        skillIcon: import.meta.env.BASE_URL + 'images/remote/ultimate_chiyo.png',
         generateOnCanvas: ultimate
       }
     }

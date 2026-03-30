@@ -10,9 +10,9 @@ export default {
 	announcementdata: {
 		notshowntoday: "今日不再显示",
 		pin: {
-			title: "更新",
-			date: "2025.4.23",
-			summary: "添加了新地图和玛拉",
+			title: "Update",
+			date: "2026.3.25",
+			summary: "Bug fixes, French language added",
 			data: {}
 		},
 		history: []

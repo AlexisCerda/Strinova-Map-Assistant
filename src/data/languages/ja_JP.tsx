@@ -11,8 +11,8 @@ export default {
 		notshowntoday: "Not show today",
 		pin: {
 			title: "Update",
-			date: "2025.4.23",
-			summary: "New Map & New Agent added.",
+			date: "2026.3.25",
+			summary: "Bug fixes, French language added",
 			data: {}
 		},
 		history: []

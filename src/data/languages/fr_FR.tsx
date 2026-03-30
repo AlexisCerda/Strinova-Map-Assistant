@@ -479,7 +479,7 @@ export default {
     },
     Cielle: {
       Name: "Cielle",
-      Type: "Duelliste",
+      Type: "Duellist",
       skillActiveName: `Bouclier mobile`,
       skillActiveDescription: `Cielle déploie un bouclier énergétique pour bloquer les DÉG. Cielle peut charger en avant tant que le bouclier est actif. Son armure est restaurée lorsque le bouclier subit des DÉG. Ce dernier se répare progressivement après sa désactivation. Les fusils de précision lui infligent des DÉG supplémentaires.`,
       skillPassiveName: `Chambre automatique`,
