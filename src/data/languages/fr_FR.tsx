@@ -83,7 +83,7 @@ export default {
       {
         icon: <><FaGithub style={{ color: "rgba(var(--semi-grey-9), 1)", fontSize: "20px", marginRight: "10px" }} /></>,
         content: "Github Page",
-        url: "https://khaos-experiences.fr/asm/"
+        url: "https://khaos-experiences.fr/sma/"
       }
     ],
     CN: [],

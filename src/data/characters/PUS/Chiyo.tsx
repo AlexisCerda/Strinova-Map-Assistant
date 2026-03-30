@@ -7,7 +7,7 @@ const character: characterData = {
   id: PUS.Chiyo,
   defense: {
     canvasImage: import.meta.env.BASE_URL + 'images/remote/1f571ffb_jC98Rq3NhrUXYWK.png',
-    bodyImage: import.meta.env.BASE_URL + 'images/remote/4e5a6c41_ZcVRCBUJ8PGwn46.png',
+    bodyImage: import.meta.env.BASE_URL + 'images/remote/chiyo.png',
     skills: {
       active: {
         skillIcon: import.meta.env.BASE_URL + 'images/remote/activeskill_chiyo.png',

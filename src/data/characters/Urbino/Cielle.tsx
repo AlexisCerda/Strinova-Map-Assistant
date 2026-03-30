@@ -7,7 +7,7 @@ const character: characterData = {
   id: Urbino.Cielle,
   attack: {
     canvasImage: import.meta.env.BASE_URL + 'images/remote/0933c39d_PI6eiLuZfcAQ2aR.png',
-    bodyImage: import.meta.env.BASE_URL + 'images/remote/4a9f2b64_xYLHks7NzduUmWP.png',
+    bodyImage: import.meta.env.BASE_URL + 'images/remote/cielle.png',
     skills: {
       active: {
         skillIcon: import.meta.env.BASE_URL + 'images/remote/activeskill_cielle.png',
@@ -29,7 +29,7 @@ const character: characterData = {
   },
   defense: {
     canvasImage: import.meta.env.BASE_URL + 'images/remote/1fddb488_Zt93QEgreUnvaxX.png',
-    bodyImage: import.meta.env.BASE_URL + 'images/remote/4a9f2b64_xYLHks7NzduUmWP.png',
+    bodyImage: import.meta.env.BASE_URL + 'images/remote/cielle.png',
     skills: {
       active: {
         skillIcon: import.meta.env.BASE_URL + 'images/remote/activeskill_cielle.png',
