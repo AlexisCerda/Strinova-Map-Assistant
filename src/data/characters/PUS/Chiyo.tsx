@@ -6,7 +6,7 @@ const character: characterData = {
   faction: factions.PUS,
   id: PUS.Chiyo,
   defense: {
-    canvasImage: import.meta.env.BASE_URL + 'images/remote/1f571ffb_jC98Rq3NhrUXYWK.png',
+    canvasImage: import.meta.env.BASE_URL + 'images/remote/chiyo_icone.png',
     bodyImage: import.meta.env.BASE_URL + 'images/remote/chiyo.png',
     skills: {
       active: {

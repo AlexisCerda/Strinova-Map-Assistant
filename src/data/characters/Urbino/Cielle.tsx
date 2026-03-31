@@ -6,7 +6,7 @@ const character: characterData = {
   faction: factions.Urbino,
   id: Urbino.Cielle,
   attack: {
-    canvasImage: import.meta.env.BASE_URL + 'images/remote/0933c39d_PI6eiLuZfcAQ2aR.png',
+    canvasImage: import.meta.env.BASE_URL + 'images/remote/cielle_icone_red.png',
     bodyImage: import.meta.env.BASE_URL + 'images/remote/cielle.png',
     skills: {
       active: {
@@ -28,7 +28,7 @@ const character: characterData = {
     }
   },
   defense: {
-    canvasImage: import.meta.env.BASE_URL + 'images/remote/1fddb488_Zt93QEgreUnvaxX.png',
+    canvasImage: import.meta.env.BASE_URL + 'images/remote/cielle_icone.png',
     bodyImage: import.meta.env.BASE_URL + 'images/remote/cielle.png',
     skills: {
       active: {
