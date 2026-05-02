@@ -537,5 +537,43 @@ export default {
 			success: 'Cleared all markings',
 			failure: 'Failed to clear markings'
 		}
+	},
+	shortcutsModal: {
+		title: 'Keyboard Shortcuts',
+		sections: [
+			{
+				title: 'Tools',
+				items: [
+					{ key: 'S', description: 'Select tool' },
+					{ key: 'D', description: 'Pencil / Free draw tool' },
+					{ key: 'E', description: 'Straight line tool' },
+					{ key: 'A', description: 'Arrow line tool' },
+					{ key: 'C', description: 'Circle tool' },
+					{ key: 'R', description: 'Rectangle tool' },
+					{ key: 'T', description: 'Text tool' },
+				]
+			},
+			{
+				title: 'History',
+				items: [
+					{ key: 'Ctrl + Z', description: 'Undo last action' },
+					{ key: 'Ctrl + Y', description: 'Redo last action' },
+				]
+			},
+			{
+				title: 'File',
+				items: [
+					{ key: 'Ctrl + S', description: 'Save file' },
+					{ key: 'Ctrl + O', description: 'Load file' },
+					{ key: 'Ctrl + I', description: 'Export as image' },
+				]
+			},
+			{
+				title: 'Canvas',
+				items: [
+					{ key: 'Alt + Click', description: 'Move magnifier target' },
+				]
+			},
+		]
 	}
 }

@@ -11,6 +11,7 @@ import Announcement from '../announcement'
 import { LanguageContext } from '../../contexts/LanguageContext.ts'
 import { ThemeContext, ThemeType } from '../../contexts/ThemeContext.ts'
 import { Languages } from '../../types/interface.ts'
+import ShortcutsModal from '../buttons/ShortcutsModal.tsx'
 
 interface HeaderContentProps {
   changeLanguage: (lang: Languages) => void
@@ -61,6 +62,7 @@ const HeaderContent: React.FC<HeaderContentProps> = ({
         <div style={{ flex: 1 }} />
         <Nav.Footer>
           <Announcement name={currentLanguage.announcement} content={currentLanguage.announcementdata} />
+          <ShortcutsModal />
           <Button
             icon={
               currentTheme === "light" ? (

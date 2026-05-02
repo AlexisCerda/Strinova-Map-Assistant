@@ -597,5 +597,43 @@ export default {
       success: 'Marqueurs effacés',
       failure: "Échec de l'effacement des marqueurs"
     }
+  },
+  shortcutsModal: {
+    title: 'Raccourcis clavier',
+    sections: [
+      {
+        title: 'Outils',
+        items: [
+          { key: 'S', description: 'Outil de sélection' },
+          { key: 'D', description: 'Outil crayon / dessin libre' },
+          { key: 'E', description: 'Outil ligne droite' },
+          { key: 'A', description: 'Outil ligne fléchée' },
+          { key: 'C', description: 'Outil cercle' },
+          { key: 'R', description: 'Outil rectangle' },
+          { key: 'T', description: 'Outil texte' },
+        ]
+      },
+      {
+        title: 'Historique',
+        items: [
+          { key: 'Ctrl + Z', description: 'Annuler la dernière action' },
+          { key: 'Ctrl + Y', description: 'Rétablir la dernière action' },
+        ]
+      },
+      {
+        title: 'Fichier',
+        items: [
+          { key: 'Ctrl + S', description: 'Sauvegarder le fichier' },
+          { key: 'Ctrl + O', description: 'Charger un fichier' },
+          { key: 'Ctrl + I', description: 'Exporter en image' },
+        ]
+      },
+      {
+        title: 'Canevas',
+        items: [
+          { key: 'Alt + Clic', description: 'Déplacer la cible de la loupe' },
+        ]
+      },
+    ]
   }
 }

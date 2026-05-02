@@ -47,6 +47,19 @@ interface MarkBox {
 	}
 }
 
+interface ShortcutItem {
+	key: string
+	description: string
+}
+
+export interface ShortcutsData {
+	title: string
+	sections: {
+		title: string
+		items: ShortcutItem[]
+	}[]
+}
+
 interface BugPointSetting {
 	spotmark: string
 	spotmarks: {
@@ -205,4 +218,5 @@ export interface I18nData {
 		[key in others]: string
 	}
 	markbox: MarkBox
+	shortcutsModal: ShortcutsData
 }
