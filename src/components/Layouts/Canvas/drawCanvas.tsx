@@ -3,6 +3,18 @@ import { DrawType, Pikaso, type BaseShapes } from 'pikaso'
 import { mapTools } from '../../../utils/canvasConstants'
 import { getDragValue, setDragValue } from '../../../data/dragAndDrop.ts'
 
+// Converts a hex color (#rrggbb or #rgb) to rgba with the given opacity
+const hexToRgba = (hex: string, alpha: number): string => {
+  const sanitized = hex.replace('#', '')
+  const full = sanitized.length === 3
+    ? sanitized.split('').map(c => c + c).join('')
+    : sanitized
+  const r = parseInt(full.substring(0, 2), 16)
+  const g = parseInt(full.substring(2, 4), 16)
+  const b = parseInt(full.substring(4, 6), 16)
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`
+}
+
 interface PikasoMapProps {
   pikasoRef: React.RefObject<HTMLDivElement>
   pikasoEditor: Pikaso<BaseShapes> | null
@@ -72,6 +84,20 @@ const DrawMap: React.FC<PikasoMapProps> = ({
           strokeWidth: penWidth
         })
         break
+      case DrawType.Circle:
+        pikasoEditor?.shapes.circle.draw({
+          stroke: penColor,
+          strokeWidth: lineWidth,
+          fill: hexToRgba(penColor, 0.3)
+        })
+        break
+      case DrawType.Rect:
+        pikasoEditor?.shapes.rect.draw({
+          stroke: penColor,
+          strokeWidth: lineWidth,
+          fill: hexToRgba(penColor, 0.3)
+        })
+        break
       case 'SELECT':
         pikasoEditor?.shapes.pencil.stopDrawing()
         break
@@ -92,6 +118,8 @@ const DrawMap: React.FC<PikasoMapProps> = ({
     pikasoEditor?.shapes.line,
     pikasoEditor?.shapes.pencil,
     pikasoEditor?.shapes.arrow,
+    pikasoEditor?.shapes.circle,
+    pikasoEditor?.shapes.rect,
   ])
 
   useLayoutEffect(() => {
@@ -128,6 +156,22 @@ const DrawMap: React.FC<PikasoMapProps> = ({
         pikasoEditor?.shapes.pencil.draw({
           stroke: penColor,
           strokeWidth: penWidth
+        })
+        break
+      case DrawType.Circle:
+        pikasoEditor?.shapes.circle.stopDrawing()
+        pikasoEditor?.shapes.circle.draw({
+          stroke: penColor,
+          strokeWidth: lineWidth,
+          fill: hexToRgba(penColor, 0.3)
+        })
+        break
+      case DrawType.Rect:
+        pikasoEditor?.shapes.rect.stopDrawing()
+        pikasoEditor?.shapes.rect.draw({
+          stroke: penColor,
+          strokeWidth: lineWidth,
+          fill: hexToRgba(penColor, 0.3)
         })
         break
       case 'SELECT':

@@ -8,12 +8,12 @@ import ColorPopover from './Popovers/ColorPopover'
 import { FaMousePointer, FaUpload, FaDownload } from 'react-icons/fa'
 import { RxText } from "react-icons/rx"
 import ToolNormalButton from './Buttons/tool-normal-button'
-import { PiArrowRightFill, PiLineSegmentFill } from 'react-icons/pi'
+import { PiArrowRightFill, PiLineSegmentFill, PiCircle } from 'react-icons/pi'
+import { TbRectangle, TbZoomIn } from 'react-icons/tb'
 import ToolColorButton from './Buttons/tool-color-button'
 import { Popconfirm, Toast } from '@douyinfe/semi-ui'
 import { RiScreenshot2Fill } from "react-icons/ri";
 import html2canvas from 'html2canvas'
-import { TbZoomIn } from 'react-icons/tb'
 import { LanguageContext } from '../../contexts/LanguageContext.ts'
 
 interface SiderToolsProps {
@@ -76,6 +76,8 @@ const SiderTools: React.FC<SiderToolsProps> = ({
   const refDraw = React.useRef<HTMLSpanElement>(null)
   const refEdge = React.useRef<HTMLSpanElement>(null)
   const refArrow = React.useRef<HTMLSpanElement>(null)
+  const refCircle = React.useRef<HTMLSpanElement>(null)
+  const refRect = React.useRef<HTMLSpanElement>(null)
   const refText = React.useRef<HTMLSpanElement>(null)
   const refImageSave = React.useRef<HTMLSpanElement>(null)
   const refLoad = React.useRef<HTMLSpanElement>(null)
@@ -87,6 +89,8 @@ const SiderTools: React.FC<SiderToolsProps> = ({
       else if (!e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey && e.code === 'KeyD') { (refDraw.current?.firstChild as HTMLElement).click() }
       else if (!e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey && e.code === 'KeyE') { (refEdge.current?.firstChild as HTMLElement).click() }
       else if (!e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey && e.code === 'KeyA') { (refArrow.current?.firstChild as HTMLElement).click() }
+      else if (!e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey && e.code === 'KeyC') { (refCircle.current?.firstChild as HTMLElement).click() }
+      else if (!e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey && e.code === 'KeyR') { (refRect.current?.firstChild as HTMLElement).click() }
       else if (!e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey && e.code === 'KeyT') { (refText.current?.firstChild as HTMLElement).click() }
       else if ((e.ctrlKey || e.metaKey) && !e.shiftKey && !e.altKey && e.code === 'KeyI') { e.preventDefault(); (refImageSave.current?.firstChild as HTMLElement).click() }
       else if ((e.ctrlKey || e.metaKey) && !e.shiftKey && !e.altKey && e.code === 'KeyS') { e.preventDefault(); (refSave.current?.firstChild as HTMLElement).click() }
@@ -132,6 +136,26 @@ const SiderTools: React.FC<SiderToolsProps> = ({
           icon={PiArrowRightFill}
           isActiveTool={canvasTool === DrawType.Arrow}
           onClick={() => setTool(DrawType.Arrow)}
+          penWidth={lineWidth}
+          setpenWidth={setLineWidth}
+          penColor={penColor}
+        />
+      </span>
+      <span ref={refCircle}>
+        <ToolPopoverButton
+          icon={PiCircle}
+          isActiveTool={canvasTool === DrawType.Circle}
+          onClick={() => setTool(DrawType.Circle)}
+          penWidth={lineWidth}
+          setpenWidth={setLineWidth}
+          penColor={penColor}
+        />
+      </span>
+      <span ref={refRect}>
+        <ToolPopoverButton
+          icon={TbRectangle}
+          isActiveTool={canvasTool === DrawType.Rect}
+          onClick={() => setTool(DrawType.Rect)}
           penWidth={lineWidth}
           setpenWidth={setLineWidth}
           penColor={penColor}
