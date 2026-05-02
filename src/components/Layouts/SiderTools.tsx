@@ -156,8 +156,8 @@ const SiderTools: React.FC<SiderToolsProps> = ({
         >
         <div
           style={{
-            width: '4rem',
-            height: '4rem',
+            width: '100%',
+            height: '3.5rem',
             backgroundColor: 'var(--semi-color-tertiary-light-hover)',
             display: 'flex',
             alignItems: 'center',

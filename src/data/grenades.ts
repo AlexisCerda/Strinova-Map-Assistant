@@ -8,7 +8,8 @@ export enum grenades {
 	SmokeBomb = "SmokeBomb",
 	Alarm = "Alarm",
 	WindstormGrenade = "WindstormGrenade",
-	SnowBall = "SnowBall"
+	SnowBall = "SnowBall",
+	ShieldBarrier = "ShieldBarrier"
 }
 
 export interface grenadeData {
@@ -52,6 +53,10 @@ export const grenadeData: grenadeData[] = [
 	{
 		grenade: grenades.Interceptor,
 		imageLink: import.meta.env.BASE_URL + "images/remote/b26be4a1_b8jqTHJZxtEPgy5.png"
+	},
+	{
+		grenade: grenades.ShieldBarrier,
+		imageLink: import.meta.env.BASE_URL + "images/remote/shield_barrier.png"
 	}
 ]
 

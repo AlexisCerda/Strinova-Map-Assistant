@@ -23,6 +23,15 @@ const Magnifier: React.FC<MagnifierProps> = ({ visible, onClose, items, targetPo
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const requestRef = useRef<number>()
 
+  useEffect(() => {
+    if (visible) {
+      setPos({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2
+      })
+    }
+  }, [visible])
+
   const updateCanvas = () => {
     if (!canvasRef.current || !visible) return
 
@@ -46,27 +55,36 @@ const Magnifier: React.FC<MagnifierProps> = ({ visible, onClose, items, targetPo
     
     // Calculate source region based on targetPos (logical 0-1000)
     // We need to convert logical targetPos to pixel coordinates on the source canvases
-    // Source canvases are 1000 * canvasTransform.scale in size
-    const sourcePixelX = (targetPos.x / 1000) * (1000 * canvasTransform.scale)
-    const sourcePixelY = (targetPos.y / 1000) * (1000 * canvasTransform.scale)
-
-    const sourceW = (size / zoom)
-    const sourceH = (size / zoom)
+    // Source canvases are 1000 * canvasTransform.scale in CSS size, but their internal bitmap
+    // might be scaled by devicePixelRatio.
     
-    const sx = sourcePixelX - sourceW / 2
-    const sy = sourcePixelY - sourceH / 2
+    const pixelRatioMapX = mapCanvas.width / (1000 * canvasTransform.scale)
+    const pixelRatioMapY = mapCanvas.height / (1000 * canvasTransform.scale)
+    
+    const sxMap = (targetPos.x * canvasTransform.scale - (size / zoom) / 2) * pixelRatioMapX
+    const syMap = (targetPos.y * canvasTransform.scale - (size / zoom) / 2) * pixelRatioMapY
+    const swMap = (size / zoom) * pixelRatioMapX
+    const shMap = (size / zoom) * pixelRatioMapY
+
+    const pixelRatioDrawX = drawCanvas.width / (1000 * canvasTransform.scale)
+    const pixelRatioDrawY = drawCanvas.height / (1000 * canvasTransform.scale)
+
+    const sxDraw = (targetPos.x * canvasTransform.scale - (size / zoom) / 2) * pixelRatioDrawX
+    const syDraw = (targetPos.y * canvasTransform.scale - (size / zoom) / 2) * pixelRatioDrawY
+    const swDraw = (size / zoom) * pixelRatioDrawX
+    const shDraw = (size / zoom) * pixelRatioDrawY
 
     // Draw Map
     ctx.drawImage(
       mapCanvas,
-      sx, sy, sourceW, sourceH,
+      sxMap, syMap, swMap, shMap,
       0, 0, size, size
     )
 
     // Draw Drawings
     ctx.drawImage(
       drawCanvas,
-      sx, sy, sourceW, sourceH,
+      sxDraw, syDraw, swDraw, shDraw,
       0, 0, size, size
     )
 

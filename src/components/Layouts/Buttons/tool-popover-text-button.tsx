@@ -41,9 +41,9 @@ const toolTextPopoverButton: React.FC<StandardButtonProps> = (props) => {
   return (
     <Popover content={markPlate} position={'left'}>
       <Button
-        icon={<props.icon size={'2rem'} />}
+        icon={<props.icon size={'1.75rem'} />}
         size='large'
-        style={{ width: '100%', height: '4rem' }}
+        style={{ width: '100%', height: '3.5rem' }}
         type={props.isActiveTool ? 'secondary' : 'tertiary'}
         onClick={props.onClick}
       />

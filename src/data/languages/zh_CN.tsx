@@ -148,7 +148,8 @@ export default {
 			CauchyDistrict: '柯西街区',
 			Area88: '88区',
 			Base404: '404基地',
-			Ocarnus: '奥卡努斯'
+			Ocarnus: '奥卡努斯',
+			LebrunCity: 'Lebrun City'
 		},
 		TeamHighlight: '区分阵营',
 		TeamHighlightOptions: {
@@ -519,7 +520,8 @@ export default {
 		SmokeBomb: '烟雾弹',
 		Alarm: '警报器',
 		WindstormGrenade: '风场雷',
-		SnowBall: '雪球'
+		SnowBall: '雪球',
+		ShieldBarrier: 'Shield Barrier'
 	},
 	others: {
 		Bomb: 'Bomb',

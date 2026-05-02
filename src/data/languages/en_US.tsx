@@ -137,7 +137,8 @@ export default {
 			EulerPort: 'Port Euler',
 			Area88: 'Area 88',
 			Base404: 'Base 404',
-			Ocarnus: 'Ocarnus'
+			Ocarnus: 'Ocarnus',
+			LebrunCity: 'Lebrun City'
 		},
 		TeamHighlight: 'Team Highlight',
 		TeamHighlightOptions: {
@@ -508,7 +509,8 @@ export default {
 		SmokeBomb: 'Smoke Bomb',
 		Alarm: 'Alarm',
 		WindstormGrenade: 'Windstorm Grenade',
-		SnowBall: 'Snow Ball'
+		SnowBall: 'Snow Ball',
+		ShieldBarrier: 'Shield Barrier'
 	},
 	others: {
 		Bomb: 'Bomb',

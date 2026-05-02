@@ -7,7 +7,8 @@ export enum MapName {
   CauchyDistrict = "CauchyDistrict",
   Area88 = "Area88",
   Base404 = "Base404",
-  Ocarnus = "Ocarnus"
+  Ocarnus = "Ocarnus",
+  LebrunCity = "LebrunCity"
 }
 
 interface MapList {
@@ -49,6 +50,10 @@ export const mapList: MapList[] = [
     map: MapName.Ocarnus,
     imgPrepareLink: import.meta.env.BASE_URL + "images/remote/60ad943a_HAisD5nj9Plz4dV.png",
     imgBlankLink: import.meta.env.BASE_URL + "images/remote/50252dc5_pzYjVHbdiL3qn7c.webp"
+  }, {
+    map: MapName.LebrunCity,
+    imgPrepareLink: import.meta.env.BASE_URL + "images/remote/lebruncity_prepare.png",
+    imgBlankLink: import.meta.env.BASE_URL + "images/remote/lebruncity_blank.png"
   }
 ];
 

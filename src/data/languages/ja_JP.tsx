@@ -137,7 +137,8 @@ export default {
 			EulerPort: 'オイラー港',
 			Area88: '88街区',
 			Base404: '404基地',
-			Ocarnus: '奥卡努斯'
+			Ocarnus: '奥卡努斯',
+			LebrunCity: 'Lebrun City'
 		},
 		TeamHighlight: 'チームハイライト',
 		TeamHighlightOptions: {
@@ -508,7 +509,8 @@ export default {
 		SmokeBomb: '煙幕弾',
 		Alarm: '警報器',
 		WindstormGrenade: '風雷ボム',
-		SnowBall: '雪玉'
+		SnowBall: '雪玉',
+		ShieldBarrier: 'Shield Barrier'
 	},
 	others: {
 		Bomb: 'Bomb',
