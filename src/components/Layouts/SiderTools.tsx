@@ -9,7 +9,7 @@ import { FaMousePointer, FaUpload, FaDownload } from 'react-icons/fa'
 import { RxText } from "react-icons/rx"
 import ToolNormalButton from './Buttons/tool-normal-button'
 import { PiArrowRightFill, PiLineSegmentFill, PiCircle } from 'react-icons/pi'
-import { TbRectangle, TbZoomIn } from 'react-icons/tb'
+import { TbRectangle, TbZoomIn, TbRulerMeasure } from 'react-icons/tb'
 import ToolColorButton from './Buttons/tool-color-button'
 import { Popconfirm, Toast } from '@douyinfe/semi-ui'
 import { RiScreenshot2Fill } from "react-icons/ri";
@@ -82,6 +82,7 @@ const SiderTools: React.FC<SiderToolsProps> = ({
   const refImageSave = React.useRef<HTMLSpanElement>(null)
   const refLoad = React.useRef<HTMLSpanElement>(null)
   const refSave = React.useRef<HTMLSpanElement>(null)
+  const refRuler = React.useRef<HTMLSpanElement>(null)
 
   useLayoutEffect(() => {
     const bindGlobalHotKeys = (e: KeyboardEvent) => {
@@ -95,6 +96,7 @@ const SiderTools: React.FC<SiderToolsProps> = ({
       else if ((e.ctrlKey || e.metaKey) && !e.shiftKey && !e.altKey && e.code === 'KeyI') { e.preventDefault(); (refImageSave.current?.firstChild as HTMLElement).click() }
       else if ((e.ctrlKey || e.metaKey) && !e.shiftKey && !e.altKey && e.code === 'KeyS') { e.preventDefault(); (refSave.current?.firstChild as HTMLElement).click() }
       else if ((e.ctrlKey || e.metaKey) && !e.shiftKey && !e.altKey && e.code === 'KeyO') { e.preventDefault(); (refLoad.current?.firstChild as HTMLElement).click() }
+      else if (!e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey && e.code === 'KeyM') { (refRuler.current?.firstChild as HTMLElement).click() }
     }
     document.body.addEventListener('keydown', bindGlobalHotKeys)
     return () => {
@@ -109,6 +111,13 @@ const SiderTools: React.FC<SiderToolsProps> = ({
           Icon={FaMousePointer}
           isActiveTool={canvasTool === 'SELECT'}
           onClick={() => setTool('SELECT')}
+        />
+      </span>
+      <span ref={refRuler}>
+        <ToolNormalButton
+          Icon={TbRulerMeasure}
+          isActiveTool={canvasTool === 'RULER'}
+          onClick={() => setTool('RULER')}
         />
       </span>
       <span ref={refDraw}>

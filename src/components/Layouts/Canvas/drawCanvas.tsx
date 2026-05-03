@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useCallback } from 'react'
+import React, { useLayoutEffect, useRef, useCallback, useState } from 'react'
 import { DrawType, Pikaso, type BaseShapes } from 'pikaso'
 import { mapTools } from '../../../utils/canvasConstants'
 import { getDragValue, setDragValue } from '../../../data/dragAndDrop.ts'
@@ -30,6 +30,7 @@ interface PikasoMapProps {
   style?: React.CSSProperties
   onAddItem: (item: any) => void
   canvasTransform: { x: number, y: number, scale: number }
+  meterScale: number
 }
 
 const DrawMap: React.FC<PikasoMapProps> = ({
@@ -46,8 +47,13 @@ const DrawMap: React.FC<PikasoMapProps> = ({
   load,
   style,
   onAddItem,
-  canvasTransform
+  canvasTransform,
+  meterScale
 }) => {
+  const [isMeasuring, setIsMeasuring] = useState(false)
+  const [measureStart, setMeasureStart] = useState({ x: 0, y: 0 })
+  const [measureEnd, setMeasureEnd] = useState({ x: 0, y: 0 })
+
   const rescaleTO = useRef<ReturnType<typeof setTimeout> | null>(null)
   const rescaleEditor = useCallback((timeout: number = 0) => {
     if (rescaleTO.current !== null) clearTimeout(rescaleTO.current)
@@ -102,6 +108,9 @@ const DrawMap: React.FC<PikasoMapProps> = ({
         pikasoEditor?.shapes.pencil.stopDrawing()
         break
       case 'TEXT':
+        pikasoEditor?.shapes.pencil.stopDrawing()
+        break
+      case 'RULER':
         pikasoEditor?.shapes.pencil.stopDrawing()
         break
     }
@@ -201,6 +210,44 @@ const DrawMap: React.FC<PikasoMapProps> = ({
         })
         setTool('SELECT')
         break
+      case 'RULER':
+        pikasoEditor?.shapes.pencil.stopDrawing()
+        break
+    }
+  }
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (canvasTool === 'RULER') {
+      const rect = e.currentTarget.getBoundingClientRect()
+      const diff = { x: e.clientX - rect.left, y: e.clientY - rect.top }
+      const scale = Math.min(rect.width / 1000, rect.height / 1000)
+      const offsetX = (rect.width - 1000 * scale) / 2
+      const offsetY = (rect.height - 1000 * scale) / 2
+      const pos = { x: (diff.x - offsetX) / scale, y: (diff.y - offsetY) / scale }
+      
+      setIsMeasuring(true)
+      setMeasureStart(pos)
+      setMeasureEnd(pos)
+      e.currentTarget.setPointerCapture(e.pointerId)
+    }
+  }
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (canvasTool === 'RULER' && isMeasuring) {
+      const rect = e.currentTarget.getBoundingClientRect()
+      const diff = { x: e.clientX - rect.left, y: e.clientY - rect.top }
+      const scale = Math.min(rect.width / 1000, rect.height / 1000)
+      const offsetX = (rect.width - 1000 * scale) / 2
+      const offsetY = (rect.height - 1000 * scale) / 2
+      const pos = { x: (diff.x - offsetX) / scale, y: (diff.y - offsetY) / scale }
+      setMeasureEnd(pos)
+    }
+  }
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (canvasTool === 'RULER' && isMeasuring) {
+      setIsMeasuring(false)
+      e.currentTarget.releasePointerCapture(e.pointerId)
     }
   }
 
@@ -236,6 +283,34 @@ const DrawMap: React.FC<PikasoMapProps> = ({
           height: size
         })
       }
+    } else if (dragValue?.type === 'areaEffect') {
+      const effectData = dragValue.data
+      const scale = Math.min(rect.width / 1000, rect.height / 1000)
+      const offsetX = (rect.width - 1000 * scale) / 2
+      const offsetY = (rect.height - 1000 * scale) / 2
+      
+      const pos = { 
+        x: (diff.x - offsetX) / scale, 
+        y: (diff.y - offsetY) / scale 
+      }
+      
+      // Calculate size in 1000x1000 space
+      const sizeInMeters = effectData.shape === 'circle' ? effectData.radius * 2 : effectData.width
+      const heightInMeters = effectData.shape === 'circle' ? effectData.radius * 2 : effectData.height
+      const itemWidth = sizeInMeters * meterScale
+      const itemHeight = heightInMeters * meterScale
+
+      onAddItem({
+        type: 'areaEffect',
+        value: effectData.id,
+        name: effectData.name,
+        color: effectData.color,
+        shape: effectData.shape,
+        x: pos.x,
+        y: pos.y,
+        width: itemWidth,
+        height: itemHeight
+      })
     } else if(e.dataTransfer && e.dataTransfer.files[0]?.type == 'application/json') {
       let reader = new FileReader();
       reader.onload = function(re) {
@@ -254,13 +329,50 @@ const DrawMap: React.FC<PikasoMapProps> = ({
 
   return (
     <div
-      ref={pikasoRef}
       style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', touchAction: 'none', ...style }}
       className='drawCanvas'
       onDrop={handleOnDrop}
       onTouchEnd={handleOnDrop}
       onDragOver={handleDragOver}
-      onClick={handleCanvasMouseDown}></div>
+      onClick={handleCanvasMouseDown}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}>
+      <div ref={pikasoRef} style={{ width: '100%', height: '100%' }}></div>
+      {isMeasuring && (
+        <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 100 }}>
+          {(() => {
+            const dx = measureEnd.x - measureStart.x
+            const dy = measureEnd.y - measureStart.y
+            const distance = Math.sqrt(dx * dx + dy * dy)
+            const meters = (distance / meterScale).toFixed(1)
+            
+            const scale = canvasTransform.scale
+            const offsetX = (1000 * scale - 1000 * scale) / 2 // in relative to container it's 0 if container is sized perfectly
+            // the SVG covers the whole container, which is 1000 * scale
+            // measureStart is in 0-1000 scale.
+            const startX = measureStart.x * scale
+            const startY = measureStart.y * scale
+            const endX = measureEnd.x * scale
+            const endY = measureEnd.y * scale
+            
+            const midX = (startX + endX) / 2
+            const midY = (startY + endY) / 2
+            
+            return (
+              <>
+                <line x1={startX} y1={startY} x2={endX} y2={endY} stroke={penColor} strokeWidth={lineWidth + 2} strokeDasharray="5,5" />
+                <circle cx={startX} cy={startY} r={lineWidth + 2} fill={penColor} />
+                <circle cx={endX} cy={endY} r={lineWidth + 2} fill={penColor} />
+                <text x={midX} y={midY - 10} fill={penColor} fontSize="16" fontWeight="bold" textAnchor="middle" style={{ textShadow: '1px 1px 2px black, -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black' }}>
+                  {meters} m
+                </text>
+              </>
+            )
+          })()}
+        </svg>
+      )}
+    </div>
   )
 }
 

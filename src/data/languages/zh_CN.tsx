@@ -556,6 +556,7 @@ export default {
 				title: 'Tools',
 				items: [
 					{ key: 'S', description: 'Select tool' },
+					{ key: 'M', description: 'Measure tool (Ruler)' },
 					{ key: 'D', description: 'Pencil / Free draw tool' },
 					{ key: 'E', description: 'Straight line tool' },
 					{ key: 'A', description: 'Arrow line tool' },
@@ -583,6 +584,7 @@ export default {
 				title: 'Canvas',
 				items: [
 					{ key: 'Alt + Click', description: 'Move magnifier target' },
+					{ key: 'Shift + Drag', description: 'Snap rotation (15°)' },
 				]
 			},
 		]

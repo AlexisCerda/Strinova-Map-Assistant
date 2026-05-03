@@ -1,6 +1,6 @@
 import { DrawType } from 'pikaso';
 
-export type mapTools = DrawType | "SELECT" | "TEXT";
+export type mapTools = DrawType | "SELECT" | "TEXT" | "RULER";
 
 export const colorPalette = [
 	"#FFFFFF",

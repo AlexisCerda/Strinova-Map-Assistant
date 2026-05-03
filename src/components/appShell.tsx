@@ -33,7 +33,7 @@ interface AppShellProps {
 
 export interface CanvasItem {
 	id: string
-	type: 'image' | 'text'
+	type: 'image' | 'text' | 'areaEffect'
 	name?: string
 	value: string // image URL or text content
 	x: number // 1000x1000 stage space
@@ -43,6 +43,7 @@ export interface CanvasItem {
 	width?: number
 	height?: number
 	rotation?: number
+	shape?: 'circle' | 'rect'
 }
 
 const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
@@ -223,6 +224,7 @@ const AppShell: React.FC<AppShellProps> = ({ characterData }) => {
 					onAddItem={handleAddCanvasItem}
 					style={{ position: 'absolute', top: '0', left: '0', pointerEvents: 'auto', zIndex: 10 }}
 					canvasTransform={canvasTransform}
+					meterScale={mapList.find(m => m.map === presentMap)?.meterScale || 10}
 				/>
 				<CanvasOverlay
 					items={canvasItems}

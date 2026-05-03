@@ -4,6 +4,10 @@ import React from 'react'
 import { Col, Row } from '@douyinfe/semi-ui'
 import { characterData, characterRegistry } from '../../../data/characters/characterRegistry.ts'
 import { grenadeData, otherData } from '../../../data/grenades.ts'
+import { areaEffectsData } from '../../../data/areaEffects.ts'
+import { AreaEffectSiderItem } from './SiderItem.tsx'
+import { Input } from '@douyinfe/semi-ui'
+import { IconSearch } from '@douyinfe/semi-icons'
 
 interface SiderContentRowProps {
   data: characterData[]
@@ -63,5 +67,32 @@ export const OtherRow: React.FC = () => {
         </Col>
       ))}
     </Row>
+  )
+}
+
+export const AreaEffectRow: React.FC = () => {
+  const [searchText, setSearchText] = React.useState('')
+
+  const filteredData = areaEffectsData.filter(item => 
+    item.name.toLowerCase().includes(searchText.toLowerCase())
+  )
+
+  return (
+    <div style={{ padding: '0' }}>
+      <Input 
+        prefix={<IconSearch />}
+        placeholder="Rechercher..." 
+        value={searchText}
+        onChange={(v) => setSearchText(v)}
+        style={{ marginBottom: '10px' }}
+      />
+      <Row gutter={[16, 6]} style={{ width: '100%', margin: "0 auto" }}>
+        {filteredData.map((itemData) => (
+          <Col key={itemData.id} span={6} style={{ display: 'flex', placeItems: 'center', placeContent: 'center' }}>
+            <AreaEffectSiderItem data={itemData} />
+          </Col>
+        ))}
+      </Row>
+    </div>
   )
 }
