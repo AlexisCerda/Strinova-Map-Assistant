@@ -7,7 +7,7 @@ interface CanvasOverlayProps {
   onUpdateItem: (id: string, updates: Partial<CanvasItemType>) => void
   onDeleteItem: (id: string) => void
   style?: React.CSSProperties
-  canvasTransform: { x: number, y: number, scale: number }
+  canvasTransform: { x: number; y: number; scale: number }
 }
 
 const CanvasOverlay: React.FC<CanvasOverlayProps> = ({ items, onUpdateItem, onDeleteItem, style, canvasTransform }) => {
@@ -33,24 +33,24 @@ const CanvasOverlay: React.FC<CanvasOverlayProps> = ({ items, onUpdateItem, onDe
 
   return (
     <div
-      className="canvas-overlay no-select"
-      style={{ 
-        ...style, 
-        width: '100%', 
-        height: '100%', 
-        pointerEvents: 'none', 
-        overflow: 'hidden' 
-      }}
-    >
-      <div style={{
-        position: 'absolute',
-        left: `${transform.x}px`,
-        top: `${transform.y}px`,
-        width: `${1000 * transform.scale}px`,
-        height: `${1000 * transform.scale}px`,
-        pointerEvents: 'none'
+      className='canvas-overlay no-select'
+      style={{
+        ...style,
+        width: '100%',
+        height: '100%',
+        pointerEvents: 'none',
+        overflow: 'hidden'
       }}>
-        {items.map(item => (
+      <div
+        style={{
+          position: 'absolute',
+          left: `${transform.x}px`,
+          top: `${transform.y}px`,
+          width: `${1000 * transform.scale}px`,
+          height: `${1000 * transform.scale}px`,
+          pointerEvents: 'none'
+        }}>
+        {items.map((item) => (
           <CanvasItem
             key={item.id}
             item={item}

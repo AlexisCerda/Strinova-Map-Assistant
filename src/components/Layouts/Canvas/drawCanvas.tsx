@@ -50,9 +50,7 @@ const DrawMap: React.FC<PikasoMapProps> = ({
   canvasTransform,
   meterScale
 }) => {
-  const [isMeasuring, setIsMeasuring] = useState(false)
-  const [measureStart, setMeasureStart] = useState({ x: 0, y: 0 })
-  const [measureEnd, setMeasureEnd] = useState({ x: 0, y: 0 })
+
 
   const rescaleTO = useRef<ReturnType<typeof setTimeout> | null>(null)
   const rescaleEditor = useCallback((timeout: number = 0) => {
@@ -217,38 +215,12 @@ const DrawMap: React.FC<PikasoMapProps> = ({
   }
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (canvasTool === 'RULER') {
-      const rect = e.currentTarget.getBoundingClientRect()
-      const diff = { x: e.clientX - rect.left, y: e.clientY - rect.top }
-      const scale = Math.min(rect.width / 1000, rect.height / 1000)
-      const offsetX = (rect.width - 1000 * scale) / 2
-      const offsetY = (rect.height - 1000 * scale) / 2
-      const pos = { x: (diff.x - offsetX) / scale, y: (diff.y - offsetY) / scale }
-      
-      setIsMeasuring(true)
-      setMeasureStart(pos)
-      setMeasureEnd(pos)
-      e.currentTarget.setPointerCapture(e.pointerId)
-    }
   }
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (canvasTool === 'RULER' && isMeasuring) {
-      const rect = e.currentTarget.getBoundingClientRect()
-      const diff = { x: e.clientX - rect.left, y: e.clientY - rect.top }
-      const scale = Math.min(rect.width / 1000, rect.height / 1000)
-      const offsetX = (rect.width - 1000 * scale) / 2
-      const offsetY = (rect.height - 1000 * scale) / 2
-      const pos = { x: (diff.x - offsetX) / scale, y: (diff.y - offsetY) / scale }
-      setMeasureEnd(pos)
-    }
   }
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
-    if (canvasTool === 'RULER' && isMeasuring) {
-      setIsMeasuring(false)
-      e.currentTarget.releasePointerCapture(e.pointerId)
-    }
   }
 
   const handleOnDrop = (e: React.DragEvent<HTMLDivElement>| any) => {
@@ -339,39 +311,7 @@ const DrawMap: React.FC<PikasoMapProps> = ({
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}>
       <div ref={pikasoRef} style={{ width: '100%', height: '100%' }}></div>
-      {isMeasuring && (
-        <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 100 }}>
-          {(() => {
-            const dx = measureEnd.x - measureStart.x
-            const dy = measureEnd.y - measureStart.y
-            const distance = Math.sqrt(dx * dx + dy * dy)
-            const meters = (distance / meterScale).toFixed(1)
-            
-            const scale = canvasTransform.scale
-            const offsetX = (1000 * scale - 1000 * scale) / 2 // in relative to container it's 0 if container is sized perfectly
-            // the SVG covers the whole container, which is 1000 * scale
-            // measureStart is in 0-1000 scale.
-            const startX = measureStart.x * scale
-            const startY = measureStart.y * scale
-            const endX = measureEnd.x * scale
-            const endY = measureEnd.y * scale
-            
-            const midX = (startX + endX) / 2
-            const midY = (startY + endY) / 2
-            
-            return (
-              <>
-                <line x1={startX} y1={startY} x2={endX} y2={endY} stroke={penColor} strokeWidth={lineWidth + 2} strokeDasharray="5,5" />
-                <circle cx={startX} cy={startY} r={lineWidth + 2} fill={penColor} />
-                <circle cx={endX} cy={endY} r={lineWidth + 2} fill={penColor} />
-                <text x={midX} y={midY - 10} fill={penColor} fontSize="16" fontWeight="bold" textAnchor="middle" style={{ textShadow: '1px 1px 2px black, -1px -1px 2px black, 1px -1px 2px black, -1px 1px 2px black' }}>
-                  {meters} m
-                </text>
-              </>
-            )
-          })()}
-        </svg>
-      )}
+
     </div>
   )
 }

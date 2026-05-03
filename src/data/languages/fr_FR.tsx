@@ -605,7 +605,7 @@ export default {
         title: 'Outils',
         items: [
           { key: 'S', description: 'Outil de sélection' },
-          { key: 'M', description: 'Outil de mesure (Règle)' },
+
           { key: 'D', description: 'Outil crayon / dessin libre' },
           { key: 'E', description: 'Outil ligne droite' },
           { key: 'A', description: 'Outil ligne fléchée' },
