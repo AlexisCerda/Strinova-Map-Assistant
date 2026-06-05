@@ -31,6 +31,9 @@ We've finished:
 - Grenade and skill icon overlays
 - Magnifier (zoomed view overlay)
 - Multi-language support (zh_CN, en_US, ja_JP, fr_FR)
+- Global hotkeys and keyboard shortcuts modal
+- Header navigation with integrated language and theme toggles
+- New characters (Cielle, Chiyo) and maps (Lebrun City)
 
 ## Requirements
 
@@ -68,7 +71,7 @@ See the bottom of our website, our social media is over there.
 
 ### Summary of Modifications by Alexis CERDA
 
-All commits below were authored by **Alexis CERDA** between **2026-03-25** and **2026-03-26**.
+All commits below were authored by **Alexis CERDA** between **2026-03-25** and **2026-05-03**.
 
 ---
 
@@ -238,14 +241,62 @@ Added the Linkrachi content creator to the friend link section and added the Fre
 
 ---
 
+#### `900be18` — 2026-03-30 · _[ADD] ajouts des images des attaques de cielle et chiyo et des MAJ des annonces en anglais dans les 3 autres langues que le fr_
+
+Added skill and attack images for Cielle and Chiyo, and synchronized English announcements to other languages.
+
+---
+
+#### `40b1163` — 2026-03-30 · _[ADD] images de personnage de cielle et chiyo_
+
+Added character portraits for Cielle and Chiyo.
+
+---
+
+#### `e9af490` — 2026-03-31 · _[ADD] images icone de cielle et chiyo_
+
+Added map icons for Cielle and Chiyo.
+
+---
+
+#### `4311c80` — 2026-05-02 · _feat: initialize core AppShell layout, internationalization, and map drawing canvas features_
+
+Added Lebrun City map assets and updated translations.
+
+---
+
+#### `044d044` — 2026-05-02 · _feat: implement canvas drawing logic and sidebar tool controls for map editing_
+
+Implemented additional canvas drawing logic and connected sidebar tool controls.
+
+---
+
+#### `8e51694` — 2026-05-02 · _feat: add header navigation with integrated language/theme toggles and a new keyboard shortcuts modal support_
+
+Added header navigation, theme/language toggles, and introduced the keyboard shortcuts modal.
+
+---
+
+#### `7c05d16` — 2026-05-03 · _feat: implement interactive map canvas, editor components, and multi-language support_
+
+Major updates to interactive map canvas, editor sidebars, and translation files.
+
+---
+
+#### `b44f67f` — 2026-05-03 · _feat: implement SiderTools component with canvas controls, internationalization support, and global hotkeys._
+
+Refined the SiderTools component, connected canvas controls, and fully implemented global hotkeys.
+
+---
+
 ### Scope of Changes Overview
 
 | Category               | Details                                                          |
 | ---------------------- | ---------------------------------------------------------------- |
 | **Major fixes**        | Fixed canvas issues                                              |
-| **New components**     | `CanvasItem`, `CanvasOverlay`, `Magnifier`                       |
-| **New data files**     | 2 new characters                                                 |
-| **New feature**        | Tactical Skill system (renamed from pre-existing `subname` stub) |
+| **New components**     | `CanvasItem`, `CanvasOverlay`, `Magnifier`, `ShortcutsModal`     |
+| **New data files**     | 4 new characters (including Cielle, Chiyo) and Lebrun City map   |
+| **New feature**        | Tactical Skill system, Global Hotkeys, Theme Toggles             |
 | **New language**       | French (`fr_FR`) — full translation of UI strings                |
 | **Images localized**   | 180+ remotely-served images downloaded and bundled locally       |
 | **Dependency removed** | Removed `peerjs` from `package.json`                             |
