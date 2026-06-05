@@ -5,23 +5,23 @@ const character: characterData = {
   faction: factions.TheScissors,
   id: TheScissors.Ming,
   attack: {
-    canvasImage: 'https://s2.loli.net/2024/09/29/nuhFZjpVGgJSEyc.png',
-    bodyImage: 'https://cdn.sa.net/2025/04/22/tgNeOR5Iow6Cakc.png',
+    canvasImage: '/src/assets/image/character/Ming/icon.png',
+    bodyImage: '/src/assets/image/character/Ming/body.png',
     skills: {
       active: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/NQ2TdSqhseRZY7b.png',
+        skillIcon: '/src/assets/image/character/Ming/active.png',
         generateOnCanvas: active,
       },
       passive: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/bsAzZemy4uEcaHt.png',
+        skillIcon: '/src/assets/image/character/Ming/passive.png',
         generateOnCanvas: passive,
       },
       ultimate: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/B6KC72wphAdt4Ri.png',
+        skillIcon: '/src/assets/image/character/Ming/ultimate.png',
         generateOnCanvas: ultimate,
       },
       sub: {
-        skillIcon: 'https://cdn.sa.net/2024/11/19/CkhMrw23RbmBv5T.png',
+        skillIcon: '/src/assets/image/character/Ming/sub.png',
         generateOnCanvas: sub,
       },
     },

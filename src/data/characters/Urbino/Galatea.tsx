@@ -5,45 +5,45 @@ const character: characterData = {
   faction: factions.Urbino,
   id: Urbino.Galatea,
   attack: {
-    canvasImage: 'https://s2.loli.net/2024/09/29/wpBbSjafRNFD43K.png',
-    bodyImage: 'https://cdn.sa.net/2025/04/22/n3XUCkglqNYsyJP.png',
+    canvasImage: '/src/assets/image/character/Galatea/a_icon.png',
+    bodyImage: '/src/assets/image/character/Galatea/body.png',
     skills: {
       active: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/UQVBxmGPD9q1tsr.png',
+        skillIcon: '/src/assets/image/character/Galatea/active.png',
         generateOnCanvas: active,
       },
       passive: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/VmDbBPl9ezv5ZgU.png',
+        skillIcon: '/src/assets/image/character/Galatea/passive.png',
         generateOnCanvas: passive,
       },
       ultimate: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/xGpjiLgcUtTJbno.png',
+        skillIcon: '/src/assets/image/character/Galatea/ultimate.png',
         generateOnCanvas: ultimate,
       },
       sub: {
-        skillIcon: 'https://cdn.sa.net/2024/11/19/bNl54Ze1D7wWkJH.png',
+        skillIcon: '/src/assets/image/character/Galatea/sub.png',
         generateOnCanvas: sub,
       },
     },
   },
   defense: {
-    canvasImage: 'https://s2.loli.net/2024/09/29/t1vlASe5DNRHVZq.png',
-    bodyImage: 'https://cdn.sa.net/2025/04/22/n3XUCkglqNYsyJP.png',
+    canvasImage: '/src/assets/image/character/Galatea/d_icon.png',
+    bodyImage: '/src/assets/image/character/Galatea/body.png',
     skills: {
       active: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/UQVBxmGPD9q1tsr.png',
+        skillIcon: '/src/assets/image/character/Galatea/active.png',
         generateOnCanvas: active,
       },
       passive: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/VmDbBPl9ezv5ZgU.png',
+        skillIcon: '/src/assets/image/character/Galatea/passive.png',
         generateOnCanvas: passive,
       },
       ultimate: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/xGpjiLgcUtTJbno.png',
+        skillIcon: '/src/assets/image/character/Galatea/ultimate.png',
         generateOnCanvas: ultimate,
       },
       sub: {
-        skillIcon: 'https://cdn.sa.net/2024/11/19/bNl54Ze1D7wWkJH.png',
+        skillIcon: '/src/assets/image/character/Galatea/sub.png',
         generateOnCanvas: sub,
       },
     },

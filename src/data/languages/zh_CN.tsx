@@ -226,6 +226,7 @@ export default {
       Area88: '88区',
       Base404: '404基地',
       Ocarnus: '奥卡努斯',
+      LebrunCity: '莱布伦城',
     },
     TeamHighlight: '区分阵营',
     TeamHighlightOptions: {
@@ -299,6 +300,7 @@ export default {
       Fuchsia: '玛德蕾娜',
       BaiMo: '绯莎',
       Galatea: '加拉蒂亚',
+      Cielle: '汐',
     },
   },
   characterInfo: {
@@ -570,6 +572,18 @@ export default {
       subName: `致盲牌影`,
       subDescription: `加拉蒂亚可以释放一个特殊的卡片分身，加拉蒂亚无法传送到该分身的位置，该分身被敌人摧毁时，会对周围所有敌人造成闪光效果。`,
     },
+    Cielle: {
+      Name: '汐',
+      Type: '决斗',
+      skillActiveName: `机动护盾`,
+      skillActiveDescription: `生成可阻挡伤害的能量盾，持盾期间可进行冲撞，护盾受到伤害时会恢复汐的护甲，收起时护盾会逐渐自我修复。狙击枪会对护盾造成额外伤害。`,
+      skillPassiveName: `自驱机匣`,
+      skillPassiveDescription: `武器在收起一段时间后会自动装填弹药，冲撞或主动引爆护盾后的极短时间内可以快速切出武器。`,
+      skillUltimateName: `绝对守护`,
+      skillUltimateDescription: `强化并重置能量盾，增加护盾生命值并降低冲撞冷却，增幅冲撞效果。`,
+      subName: `引力聚缚`,
+      subDescription: `丢出引力球，落地后将敌方向中心吸引并造成伤害，对敌方召唤物造成额外伤害，引力球可以被摧毁。`,
+    }
   },
   characterTypes: {
     Sentinel: '守护',
@@ -588,6 +602,7 @@ export default {
     Alarm: '警报器',
     WindstormGrenade: '风场雷',
     SnowBall: '雪球',
+    ShieldBarrier: '防弹屏障',
   },
   others: {
     Bomb: 'Bomb',

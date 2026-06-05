@@ -218,6 +218,7 @@ export default {
       Area88: 'Area 88',
       Base404: 'Base 404',
       Ocarnus: 'Ocarnus',
+      LebrunCity: 'Lebrun City',
     },
     TeamHighlight: 'Team Highlight',
     TeamHighlightOptions: {
@@ -291,6 +292,7 @@ export default {
       Fuchsia: 'Fuchsia',
       BaiMo: 'Bai Mo',
       Galatea: 'Galatea',
+      Cielle: 'Cielle',
     },
   },
   characterInfo: {
@@ -562,6 +564,18 @@ export default {
       subName: `subName`,
       subDescription: `subDescription`,
     },
+    Cielle: {
+      Name: 'Cielle',
+      Type: 'Duellist',
+      skillActiveName: `Maneuver Shield`,
+      skillActiveDescription: `Cielle enters stationary state & cannot move. Greatly increase Rate Of Fire & Max Shield Limit of her MG. Her MG is no longer need to reload but will overheat overtime. Cielle MG no longer has recoil.`,
+      skillPassiveName: `Self-Propelled Machine`,
+      skillPassiveDescription: `Cielle will gains 30 Extra Armor when ADS. This Extra Armor will be restored shortly after the shield is broken. Cielle's base armor +5`,
+      skillUltimateName: `Absolute Guard`,
+      skillUltimateDescription: `Cielle enters stationary state & summon her grenade launcher that shoot out 6 incendiary round. Each round will bounce off the wall and explodes when hit the ground, creating 3 small area of fire causing damage overtime.`,
+      subName: `subName`,
+      subDescription: `subDescription`,
+    },
   },
   characterTypes: {
     Sentinel: 'Sentinel',
@@ -580,6 +594,7 @@ export default {
     Alarm: 'Alarm',
     WindstormGrenade: 'Windstorm Grenade',
     SnowBall: 'Snow Ball',
+    ShieldBarrier: 'Shield Barrier',
   },
   others: {
     Bomb: 'Bomb',

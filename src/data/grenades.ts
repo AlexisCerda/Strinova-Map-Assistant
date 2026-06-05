@@ -8,6 +8,7 @@ export enum grenades {
   Alarm = 'Alarm',
   WindstormGrenade = 'WindstormGrenade',
   SnowBall = 'SnowBall',
+  ShieldBarrier = 'ShieldBarrier',
 }
 
 export interface grenadeData {
@@ -18,39 +19,43 @@ export interface grenadeData {
 export const grenadeData: grenadeData[] = [
   {
     grenade: grenades.SmokeBomb,
-    imageLink: 'https://cdn.sa.net/2025/04/22/4HUeCu6j3KdzfFy.png',
+    imageLink: '/src/assets/image/grenade/smokeBomb.png',
   },
   {
     grenade: grenades.SnowBall,
-    imageLink: 'https://cdn.sa.net/2025/04/23/EOqx1uVcloHNh3m.png',
+    imageLink: '/src/assets/image/grenade/snowBall.png',
   },
   {
     grenade: grenades.Alarm,
-    imageLink: 'https://cdn.sa.net/2025/04/22/w3ufEYUP89tlJq4.png',
+    imageLink: '/src/assets/image/grenade/alarm.png',
+  },
+  {
+    grenade: grenades.ShieldBarrier,
+    imageLink: '/src/assets/image/grenade/shieldBarrier.png',
   },
   {
     grenade: grenades.SlowGrenade,
-    imageLink: 'https://cdn.sa.net/2025/04/22/t42oXRpBiEDYFWq.png',
+    imageLink: '/src/assets/image/grenade/slowGrenade.png',
   },
   {
     grenade: grenades.HealingGrenade,
-    imageLink: 'https://cdn.sa.net/2025/04/22/X2MtclAev6NERfa.png',
+    imageLink: '/src/assets/image/grenade/healingGrenade.png',
   },
   {
     grenade: grenades.FragGrenade,
-    imageLink: 'https://cdn.sa.net/2025/04/22/dFuTREQAbfCGY9p.png',
+    imageLink: '/src/assets/image/grenade/fragGrenade.png',
   },
   {
     grenade: grenades.Flashbang,
-    imageLink: 'https://cdn.sa.net/2025/04/22/JTyFboHSYk7Dd94.png',
+    imageLink: '/src/assets/image/grenade/flashbang.png',
   },
   {
     grenade: grenades.WindstormGrenade,
-    imageLink: 'https://cdn.sa.net/2025/04/22/xPqkuA3wTUyGStV.png',
+    imageLink: '/src/assets/image/grenade/windstormGrenade.png',
   },
   {
     grenade: grenades.Interceptor,
-    imageLink: 'https://cdn.sa.net/2025/04/22/b8jqTHJZxtEPgy5.png',
+    imageLink: '/src/assets/image/grenade/interceptor.png',
   },
 ];
 
@@ -73,34 +78,34 @@ export interface otherData {
 export const otherData: otherData[] = [
   {
     other: others.Bomb,
-    imageLink: 'https://cdn.sa.net/2025/02/15/lvcYUqwA7rMsfEu.png',
+    imageLink: '/src/assets/image/pin/bomb.png',
   },
   {
     other: others.BombA,
-    imageLink: 'https://cdn.sa.net/2025/02/15/1jothFAux6P95Ve.png',
+    imageLink: '/src/assets/image/pin/bombA.png',
   },
   {
     other: others.BombB,
-    imageLink: 'https://cdn.sa.net/2025/02/15/TvUCl3QqiFyKj2r.png',
+    imageLink: '/src/assets/image/pin/bombB.png',
   },
   {
     other: others.BombC,
-    imageLink: 'https://cdn.sa.net/2025/02/15/6NUMSbevIiap534.png',
+    imageLink: '/src/assets/image/pin/bombC.png',
   },
   {
     other: others.Focus,
-    imageLink: 'https://cdn.sa.net/2025/02/15/SeVw3s7OgrbyaCz.png',
+    imageLink: '/src/assets/image/pin/focus.png',
   },
   {
     other: others.Warning,
-    imageLink: 'https://cdn.sa.net/2025/02/15/7Ev1A5tIfQgiJLl.png',
+    imageLink: '/src/assets/image/pin/warning.png',
   },
   {
     other: others.Flag,
-    imageLink: 'https://cdn.sa.net/2025/02/15/Yr62e537ER4Musv.png',
+    imageLink: '/src/assets/image/pin/flag.png',
   },
   {
     other: others.Danger,
-    imageLink: 'https://cdn.sa.net/2025/02/15/M1RvciEu7AwTpnt.png',
+    imageLink: '/src/assets/image/pin/danger.png',
   },
 ];

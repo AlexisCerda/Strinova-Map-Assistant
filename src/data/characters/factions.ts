@@ -33,6 +33,7 @@ export enum Urbino {
   Fuchsia = 'Fuchsia',
   BaiMo = 'BaiMo',
   Galatea = 'Galatea',
+  Cielle = 'Cielle',
 }
 
 type factionData = {

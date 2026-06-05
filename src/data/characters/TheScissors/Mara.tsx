@@ -5,23 +5,23 @@ const character: characterData = {
   faction: factions.TheScissors,
   id: TheScissors.Mara,
   attack: {
-    canvasImage: 'https://cdn.sa.net/2025/04/22/ZKzhmI6U3lPcLb5.png',
-    bodyImage: 'https://cdn.sa.net/2025/04/22/Y5fqMzeLCNB63dT.png',
+    canvasImage: '/src/assets/image/character/Mara/icon.png',
+    bodyImage: '/src/assets/image/character/Mara/body.png',
     skills: {
       active: {
-        skillIcon: 'https://cdn.sa.net/2025/04/22/WNG8b9KAy154uLj.png',
+        skillIcon: '/src/assets/image/character/Mara/active.png',
         generateOnCanvas: active,
       },
       passive: {
-        skillIcon: 'https://cdn.sa.net/2025/04/22/agB2vCobZk4efJM.png',
+        skillIcon: '/src/assets/image/character/Mara/passive.png',
         generateOnCanvas: passive,
       },
       ultimate: {
-        skillIcon: 'https://cdn.sa.net/2025/04/22/vDMeEWlitLqTBIQ.png',
+        skillIcon: '/src/assets/image/character/Mara/ultimate.png',
         generateOnCanvas: ultimate,
       },
       sub: {
-        skillIcon: 'https://cdn.sa.net/2025/04/22/cK4BS6k3DXndMjx.png',
+        skillIcon: '/src/assets/image/character/Mara/sub.png',
         generateOnCanvas: sub,
       },
     },

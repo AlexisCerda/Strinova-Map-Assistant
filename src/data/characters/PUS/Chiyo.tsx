@@ -8,23 +8,23 @@ const character: characterData = {
    * TODO: This image links are mock. Pls impl chiyo images.
    */
   defense: {
-    canvasImage: 'https://s2.loli.net/2024/09/29/jC98Rq3NhrUXYWK.png',
-    bodyImage: 'https://cdn.sa.net/2025/04/22/ZcVRCBUJ8PGwn46.png',
+    canvasImage: '/src/assets/image/character/Chiyo/icon.png',
+    bodyImage: '/src/assets/image/character/Chiyo/body.png',
     skills: {
       active: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/58dg6OpPntlviqW.png',
+        skillIcon: '/src/assets/image/character/Chiyo/active.png',
         generateOnCanvas: active,
       },
       passive: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/u5tV9xaNyjUL6EM.png',
+        skillIcon: '/src/assets/image/character/Chiyo/passive.png',
         generateOnCanvas: passive,
       },
       ultimate: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/ezsVQS62bY5iBcG.png',
+        skillIcon: '/src/assets/image/character/Chiyo/ultimate.png',
         generateOnCanvas: ultimate,
       },
       sub: {
-        skillIcon: 'https://cdn.sa.net/2024/11/19/lYbBufA6raXvQ1n.png',
+        skillIcon: '/src/assets/image/character/Chiyo/sub.png', 
         generateOnCanvas: sub,
       },
     },

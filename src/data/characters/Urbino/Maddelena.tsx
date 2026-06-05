@@ -5,45 +5,45 @@ const character: characterData = {
   faction: factions.Urbino,
   id: Urbino.Maddelena,
   attack: {
-    canvasImage: 'https://s2.loli.net/2024/09/29/OGgXKe6pPERflQL.png',
-    bodyImage: 'https://cdn.sa.net/2025/04/22/3djgpfyBbxWzUAD.png',
+    canvasImage: '/src/assets/image/character/Maddelena/a_icon.png',
+    bodyImage: '/src/assets/image/character/Maddelena/body.png',
     skills: {
       active: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/2r7wkizoLbpqMOZ.png',
+        skillIcon: '/src/assets/image/character/Maddelena/active.png',
         generateOnCanvas: active,
       },
       passive: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/q61FltINbyrA8YV.png',
+        skillIcon: '/src/assets/image/character/Maddelena/passive.png',
         generateOnCanvas: passive,
       },
       ultimate: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/tazvXEJNs5HuyeD.png',
+        skillIcon: '/src/assets/image/character/Maddelena/ultimate.png',
         generateOnCanvas: ultimate,
       },
       sub: {
-        skillIcon: 'https://cdn.sa.net/2024/11/19/yerm1tuq97ZnaWp.png',
+        skillIcon: '/src/assets/image/character/Maddelena/sub.png',
         generateOnCanvas: sub,
       },
     },
   },
   defense: {
-    canvasImage: 'https://s2.loli.net/2024/09/29/dxqSrs3ivIJlF5h.png',
-    bodyImage: 'https://cdn.sa.net/2025/04/22/3djgpfyBbxWzUAD.png',
+    canvasImage: '/src/assets/image/character/Maddelena/d_icon.png',
+    bodyImage: '/src/assets/image/character/Maddelena/body.png',
     skills: {
       active: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/2r7wkizoLbpqMOZ.png',
+        skillIcon: '/src/assets/image/character/Maddelena/active.png',
         generateOnCanvas: active,
       },
       passive: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/q61FltINbyrA8YV.png',
+        skillIcon: '/src/assets/image/character/Maddelena/passive.png',
         generateOnCanvas: passive,
       },
       ultimate: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/tazvXEJNs5HuyeD.png',
+        skillIcon: '/src/assets/image/character/Maddelena/ultimate.png',
         generateOnCanvas: ultimate,
       },
       sub: {
-        skillIcon: 'https://cdn.sa.net/2024/11/19/yerm1tuq97ZnaWp.png',
+        skillIcon: '/src/assets/image/character/Maddelena/sub.png',
         generateOnCanvas: sub,
       },
     },

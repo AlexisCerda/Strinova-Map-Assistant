@@ -5,45 +5,45 @@ const character: characterData = {
   faction: factions.Urbino,
   id: Urbino.Fuchsia,
   attack: {
-    canvasImage: 'https://s2.loli.net/2024/09/29/5Vbc3mYw8KJtTDC.png',
-    bodyImage: 'https://cdn.sa.net/2025/04/22/4UIkVEQ1C6tounx.png',
+    canvasImage: '/src/assets/image/character/Fuchsia/a_icon.png',
+    bodyImage: '/src/assets/image/character/Fuchsia/body.png',
     skills: {
       active: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/tkQ3jlHGeRTDPyn.png',
+        skillIcon: '/src/assets/image/character/Fuchsia/active.png',
         generateOnCanvas: active,
       },
       passive: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/5ZCmFuQhoP3zYnV.png',
+        skillIcon: '/src/assets/image/character/Fuchsia/passive.png',
         generateOnCanvas: passive,
       },
       ultimate: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/rOxFKuLX7e5QWhw.png',
+        skillIcon: '/src/assets/image/character/Fuchsia/ultimate.png',
         generateOnCanvas: ultimate,
       },
       sub: {
-        skillIcon: 'https://cdn.sa.net/2024/11/19/PxS2mWOR6TILZF9.png',
+        skillIcon: '/src/assets/image/character/Fuchsia/sub.png',
         generateOnCanvas: sub,
       },
     },
   },
   defense: {
-    canvasImage: 'https://s2.loli.net/2024/09/29/TU81atfzDKiRV2o.png',
-    bodyImage: 'https://cdn.sa.net/2025/04/22/4UIkVEQ1C6tounx.png',
+    canvasImage: '/src/assets/image/character/Fuchsia/d_icon.png',
+    bodyImage: '/src/assets/image/character/Fuchsia/body.png',
     skills: {
       active: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/tkQ3jlHGeRTDPyn.png',
+        skillIcon: '/src/assets/image/character/Fuchsia/active.png',
         generateOnCanvas: active,
       },
       passive: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/5ZCmFuQhoP3zYnV.png',
+        skillIcon: '/src/assets/image/character/Fuchsia/passive.png',
         generateOnCanvas: passive,
       },
       ultimate: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/rOxFKuLX7e5QWhw.png',
+        skillIcon: '/src/assets/image/character/Fuchsia/ultimate.png',
         generateOnCanvas: ultimate,
       },
       sub: {
-        skillIcon: 'https://cdn.sa.net/2024/11/19/PxS2mWOR6TILZF9.png',
+        skillIcon: '/src/assets/image/character/Fuchsia/sub.png',
         generateOnCanvas: sub,
       },
     },

@@ -5,23 +5,23 @@ const character: characterData = {
   faction: factions.TheScissors,
   id: TheScissors.Fragrans,
   attack: {
-    canvasImage: 'https://s2.loli.net/2024/09/29/AM58XCKyixJlTGO.png',
-    bodyImage: 'https://cdn.sa.net/2025/04/22/6cwHibDP9QmfuVC.png',
+    canvasImage: '/src/assets/image/character/Fragrans/icon.png',
+    bodyImage: '/src/assets/image/character/Fragrans/body.png',
     skills: {
       active: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/L9j3uWBrl5hNyzx.png',
+        skillIcon: '/src/assets/image/character/Fragrans/active.png',
         generateOnCanvas: active,
       },
       passive: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/B3HDdTpLjAyYQ74.png',
+        skillIcon: '/src/assets/image/character/Fragrans/passive.png',
         generateOnCanvas: passive,
       },
       ultimate: {
-        skillIcon: 'https://s2.loli.net/2024/09/25/5Xk9PUOlwFsgE6B.png',
+        skillIcon: '/src/assets/image/character/Fragrans/ultimate.png',
         generateOnCanvas: ultimate,
       },
       sub: {
-        skillIcon: 'https://cdn.sa.net/2024/11/19/JrTleR2xkfPysaA.png',
+        skillIcon: '/src/assets/image/character/Fragrans/sub.png',
         generateOnCanvas: sub,
       },
     },
