@@ -591,7 +591,7 @@ export default {
     Alarm: '警報器',
     WindstormGrenade: '風雷ボム',
     SnowBall: '雪玉',
-    ShieldBarrier: '防弾屏障',
+    ShieldBarrier: '防弾バリア',
   },
   others: {
     Bomb: 'Bomb',
